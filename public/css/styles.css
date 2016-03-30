@@ -1,0 +1,547 @@
+/*
+Order
+* Positioning
+* Displays and Box Model
+* Colours
+* Text Properties
+* Other
+
+Anchors
+* Link, Visited, Hover, Active
+* L, V, H, A
+* LoVe, HAte
+*/
+/* =========================================================================
+Vars
+========================================================================= */
+/* =============================================================================
+Main Styles
+========================================================================== */
+html {
+  height: 100%;
+  width: 100%; }
+
+body {
+  width: 100%;
+  position: absolute;
+  background: #eee;
+  padding: 0;
+  font-family: "Helvetica Nue", "Roboto", Arial, sans-serif; }
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  nav {
+    z-index: 10;
+    height: 20px; }
+
+  nav .navbar {
+    border-radius: 0; }
+
+  .navbar-fixed-alt {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    background: rgba(21, 21, 21, 0.6); }
+
+  nav .hamburger {
+    font-size: 2em;
+    color: #eee; }
+
+  .fa.fa-arrow-up {
+    font-size: 1.5em; }
+
+  header {
+    margin-top: 50px;
+    background: url("/public/img/headerback.png"); }
+
+  header .row {
+    color: #eee; }
+
+  main {
+    height: 70%;
+    margin-bottom: 50px; }
+
+  main .searchContainer {
+    margin-top: 10px; }
+
+  main .searchContainer .bar-search {
+    width: 50%;
+    height: 25px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: 1px solid #444; }
+
+  main .searchContainer .btn-search {
+    border: 1px solid #666;
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    height: 26px;
+    padding-top: 5px;
+    margin-left: -.9%; }
+
+  main .contentHeader {
+    margin-top: 10px; }
+
+  main .searchResults .row {
+    margin: 10px; }
+
+  main .contentHeader .navbar-header {
+    display: inline-block;
+    width: 40%; }
+
+  main .contentContainer {
+    margin-top: 10px;
+    height: 100%; }
+
+  main .nav-numbers {
+    position: relative;
+    bottom: -0px; }
+
+  main .row-question {
+    margin-top: 50px; }
+
+  main .answer {
+    margin-top: 20px; }
+
+  main .add {
+    cursor: pointer; }
+
+  main .panel .progress {
+    margin: 0 auto;
+    width: 50%; }
+
+  main .user .panel {
+    margin: 0 auto;
+    width: 50%; }
+
+  main .upload .panel {
+    border: #555 dashed; }
+
+  main .panel-body {
+    padding-top: 40px; }
+
+  main .panel-body h1 {
+    font-size: 4em;
+    margin-bottom: 20px; }
+
+  main .panel-body input {
+    margin: 20px auto; }
+
+  .panel.hover {
+    background-color: rgba(100, 149, 237, 0.5);
+    border: cornflowerblue dashed; }
+
+  main .panel-footer button {
+    margin: 0 auto; }
+
+  main .upload {
+    margin: 0 auto;
+    width: 50%; }
+
+  input.hide-no-file {
+    width: 90px; }
+
+  .panel-body img {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 100%; }
+
+  main .additional-list {
+    margin-top: 50px;
+    margin-left: 8%; }
+
+  footer {
+    height: 170px;
+    background: #d5d5d5; }
+
+  .three-col {
+    padding: 0 10% 0 10%;
+    text-align: justify; }
+
+  .footer-above {
+    width: 130px;
+    height: 40px;
+    margin: 0 auto;
+    line-height: 40px; }
+
+  .footer-below {
+    background: #ddd;
+    height: 120px;
+    text-align: center; }
+
+  .col-footer {
+    margin: 20px auto 0 auto; }
+
+  .col-copyright {
+    margin: 102px 0 0 0;
+    font-size: .6em; }
+
+  .test-ad {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ccc; }
+
+  .test-ad .col-sm-6 {
+    line-height: 50px;
+    height: 100%; }
+
+  .navbar-nav > li > a:hover {
+    color: #222; }
+
+  .navbar-nav > li > a {
+    color: #eee; }
+
+  .navbar-nav > li > a:hover {
+    color: #eee;
+    background: rgba(0, 0, 0, 0.5); }
+
+  .dropdown-menu.dark li > a {
+    color: #eee;
+    background: #222; }
+
+  .dropdown-menu.dark {
+    color: #eee;
+    background: #222; }
+
+  .dropdown-menu.grey li > a {
+    background: #ddd;
+    color: #222; }
+
+  .dropdown-menu.grey li > a:hover {
+    color: #222;
+    background: #eee; }
+
+  .dropdown-menu.grey {
+    color: #222;
+    background: #ddd; }
+
+  #mobileWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%; }
+
+  #mobileExit {
+    height: 100%; }
+
+  #mobileMenu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 50px;
+    background: #3c3c3c;
+    color: #eee; }
+
+  #mobileMenu .navbar-nav li {
+    padding-left: 15px;
+    margin-left: 0; }
+
+  #mobileMenu .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background: #222; }
+
+  #mobileMenu.nav > li > a:focus, #mobileMenu.nav > li > a:hover {
+    background: #222; }
+
+  .dropdown-menu.linear li > a {
+    background: #222;
+    color: #ddd; }
+
+  .dropdown-menu.linear li > a:active {
+    background: #222;
+    color: #ddd; }
+
+  .dropdown-menu.linear {
+    background: #222;
+    color: #ddd; }
+
+  .no-mobile {
+    display: none; }
+
+  .mobile-only {
+    display: block; }
+
+  .tablet-only {
+    display: none; }
+
+  .desktop-only {
+    display: none; }
+
+  .wide-only {
+    display: none; } }
+/* Small Devices, Tablets */
+@media only screen and (min-width: 737px) {
+  header {
+    padding-top: 50px;
+    height: 200px; }
+
+  nav .active {
+    text-decoration: underline; }
+
+  main .contentContainer {
+    margin-top: 35px; }
+
+  .filterSelect {
+    width: 45%; }
+
+  main .contentOptions {
+    margin: 0 auto -10px auto;
+    width: 90%;
+    height: 50px; }
+
+  main .optionlist {
+    padding: 15px;
+    height: 100%;
+    background: #ddd; }
+
+  #betaWarning {
+    cursor: pointer;
+    width: 50%;
+    height: 150px;
+    background: #ffdddd;
+    border: 1px solid #ffaaaa;
+    border-radius: 10px;
+    padding: 0 20px 20px 20px;
+    font-size: 1em;
+    margin: 0 auto 50px auto; }
+
+  #betaWarning .fa {
+    font-size: 2em; }
+
+  nav .nav-list a:hover {
+    color: #eee;
+    background: rgba(0, 0, 0, 0.5); }
+
+  .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    color: #eee;
+    background: rgba(0, 0, 0, 0.5); }
+
+  .no-mobile {
+    display: block; }
+
+  .no-tablet {
+    display: none; }
+
+  .mobile-only {
+    display: none; }
+
+  .tablet-only {
+    display: block; }
+
+  .desktop-only {
+    display: none; }
+
+  .wide-only {
+    display: none; } }
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 960px) {
+  nav a {
+    color: #eee; }
+
+  nav a:active {
+    color: #eee;
+    background: rgba(0, 0, 0, 0.5); }
+
+  nav .active {
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.2); }
+
+  .navbar-fixed-alt {
+    top: 0;
+    left: 0;
+    right: 0; }
+
+  .navbar-header a:hover {
+    color: #ddd; }
+
+  .navbar-header a:focus {
+    color: #ddd; }
+
+  .navbar-trans {
+    background: transparent; }
+
+  header {
+    margin-top: 0;
+    padding-top: 50px;
+    height: 350px; }
+
+  header #navTrigger {
+    margin-top: 170px;
+    height: 20px;
+    width: 100%; }
+
+  main {
+    height: 100%; }
+
+  main .searchContainer {
+    margin-top: 10px; }
+
+  main .searchContainer .bar-search {
+    width: 26%;
+    height: 49px; }
+
+  main .searchContainer .btn-search {
+    margin-left: -.3%;
+    height: 50px;
+    padding-top: 11px; }
+
+  main .search-term {
+    width: 40%; }
+
+  main .search-term span {
+    padding-right: 30%; }
+
+  .combo a {
+    cursor: pointer; }
+
+  #betaWarning {
+    padding: 0 20px 20px 20px;
+    font-size: 1em;
+    margin: 0 auto 50px auto; }
+
+  #betaWarning .fa {
+    font-size: 2em; }
+
+  .navbar-fixed-top form .bar-search {
+    width: 26%;
+    height: 25px; }
+
+  .navbar-fixed-top form .btn-search {
+    height: 26px;
+    padding-top: 5px;
+    font-size: 1em; }
+
+  .decreaseScale {
+    margin: 0 auto;
+    width: 80%; }
+
+  main .contentHeader {
+    margin: 30px auto 20px auto;
+    background: #ddd;
+    width: 90%;
+    height: 50px;
+    padding: 15px; }
+
+  main .contentHeader a {
+    color: #222; }
+
+  main .contentContainer {
+    margin: 30px auto 30px auto;
+    background: #ddd;
+    width: 90%;
+    min-height: 300px;
+    height: 95%;
+    padding: 30px; }
+
+  footer {
+    height: 160px;
+    background: #d5d5d5; }
+
+  footer a.btn {
+    margin: 1%; }
+
+  .test-ad {
+    position: static;
+    background: #ddd;
+    margin: 0 auto 30px auto;
+    width: 88%; }
+
+  .no-mobile {
+    display: block; }
+
+  .no-tablet {
+    display: block; }
+
+  .no-desktop {
+    display: none; }
+
+  .mobile-only {
+    display: none; }
+
+  .tablet-only {
+    display: none; }
+
+  .desktop-only {
+    display: block; }
+
+  .wide-only {
+    display: none; } }
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  #wrapper {
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto; }
+
+  main .searchContainer .btn-search {
+    margin-left: -.2%;
+    height: 50px;
+    padding-top: 11px; }
+
+  .test-ad {
+    position: static;
+    margin: 0 auto 20px auto;
+    height: 100px; }
+
+  .test-ad img {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 70%;
+    margin: 12px auto 12px auto; }
+
+  .no-mobile {
+    display: block; }
+
+  .no-tablet {
+    display: block; }
+
+  .no-desktop {
+    display: block; }
+
+  .no-wide {
+    display: none; }
+
+  .mobile-only {
+    display: none; }
+
+  .tablet-only {
+    display: none; }
+
+  .desktop-only {
+    display: none; }
+
+  .wide-only {
+    display: block; } }
+/*============ Scroll ==============*/
+.wire {
+  border: 1px solid #000; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  z-index: 999; }
+
+::-webkit-scrollbar-thumb {
+  background: rgba(121, 121, 121, 0.5);
+  border-radius: 60px;
+  z-index: 999; }
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0 none transparent;
+  border-radius: 60px;
+  z-index: 999; }
+
+/*# sourceMappingURL=styles.css.map */

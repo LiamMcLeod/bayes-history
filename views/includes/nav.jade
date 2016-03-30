@@ -1,0 +1,43 @@
+nav.navbar.navbar-fixed-alt.navbar-trans
+    .container-fluid
+        // Header
+        .navbar-header
+            a.no-tablet.no-mobile.navbar-brand.pull-left(href='#')
+                span.no-tablet.no-mobile Examplar
+            a.navbar-brand.pull-left.no-desktop.no-wide(href='#' onClick="toggleMenu()")
+                span.no-wide.no-desktop.hamburger.menu-trigger ≡
+            a.navbar-brand.pull-right.no-desktop.no-wide(href='#page-top')
+                span.no-wide.no-desktop.hamburger.menu-trigger.fa.fa-arrow-up
+        .collapse.navbar-collapse.no-mobile.no-tablet
+            ul.nav.navbar-nav.navbar-right.no-mobile.no-tablet
+                li.dropdown.no-mobile.no-tablet
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | &nbsp;
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a(href='#')
+                                span.glyphicon.glyphicon-user
+                                |  Sign Up
+                        li
+                            a(href='/user')
+                                span.glyphicon.glyphicon-log-in
+                                |  Login
+            ul.nav.navbar-nav.navbar-right.nav-list.no-tablet
+                li
+                    a.active(href='/') Search
+                li
+                    a(href='/about') About
+                li.dropdown.no-tablet
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | Contact
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a(href='mailto:l_mcleod95@hotmail.com?Subject=WebDev')
+                                span.fa.fa-mail-forward
+                                |  Email
+                        li
+                            a(href='#page-address')
+                                span.fa.fa-home
+                                |  Address
