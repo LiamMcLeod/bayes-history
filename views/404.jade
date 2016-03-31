@@ -12,13 +12,14 @@ html(lang="en-GB")
                 position:relative;
                 font-family: "Helvetica Neue",Arial,sans-serif;
                 overflow:hidden;
-                background: #ddd;
+                background: #222 url('/public/img/SPC.jpg') center no-repeat;
+                background-size: 200%;
             }
             #wrapper{
                 height: 100%;
             }
             header {
-                background: #222 url('/public/img/headerback.png') 100% no-repeat;
+                background:none;
                 height:50%;
             }
             main{
@@ -26,7 +27,7 @@ html(lang="en-GB")
 
                 z-index: -1;
             }
-            .error-nf {
+            .error-jumbo {
                 height:155%;
                 width:80%;
                 margin:100px auto 50px auto;
@@ -40,7 +41,7 @@ html(lang="en-GB")
         #wrapper
             include includes/nav
             header
-                .error-nf.jumbotron.text-center
+                .error-jumbo.jumbotron.text-center
                     h1 404
                     h2 Page Not Found
                     h3 Sorry, but the page you were trying to view does not exist
@@ -48,5 +49,4 @@ html(lang="en-GB")
                     br
                     a.btn.btn-default.form-inline(href="js:history.back()") Return
                     a.btn.btn-default.form-inline(href="/") Home
-            main
             include includes/js
