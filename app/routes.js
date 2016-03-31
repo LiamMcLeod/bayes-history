@@ -95,12 +95,10 @@ module.exports = function (app) {
     });
 
     app.get('/', function (req, res) {
-
-        var getReq = req.query['q'];
-        console.log(getReq);
-
-        res.render('index.jade', {
-            getReq: getReq
+       res.render("index.jade", {
+        }, function (err, result) {
+            if (err) notFound(res);
+            else res.send(result); // send rendered HTML back to client
         });
 
     });
@@ -109,7 +107,15 @@ module.exports = function (app) {
     app.get('/:file', function (req, res) {
         //TODO q doesn't work on / ONLY index
         var file = req.params.file;
-        var getReq = '', idReq = '';
+        var getReq='';
+        if (file === "user") {
+            if (req.cookies.user == undefined || req.cookies.pass == undefined) {
+                res.render('user', {loggedIn: false});
+            } else {
+                // attempt automatic login //
+
+            }
+        }
         res.render(file + ".jade", {
             getReq: getReq
         }, function (err, result) {
@@ -130,13 +136,13 @@ module.exports = function (app) {
     });
 
     //Catch Wildcards
-    app.get('/*', function(req, res){
-    	res.sendFile(appRoot + '/views/index.html');
-    	console.log('Input matches: /*');
+    app.get('/*', function (req, res) {
+        res.sendFile(appRoot + '/views/index.html');
+        console.log('Input matches: /*');
     });
 
-    app.get('*', function(req, res) {
-    	res.sendFile(appRoot + '/views/index.html');
-    	console.log('Input matches: *');
+    app.get('*', function (req, res) {
+        res.sendFile(appRoot + '/views/index.html');
+        console.log('Input matches: *');
     });
 };

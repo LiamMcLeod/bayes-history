@@ -6,8 +6,14 @@ var authRouter = express.Router();
 var openRouter = express.Router();
 
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+
+var session = require('express-session');
+
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
+
+var errorHandler = require('errorHandler');
 var morgan = require('morgan');
 
 var pg = require('pg');
@@ -16,6 +22,7 @@ var path = require('path');
 
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
     process.env.NODE_ENV = "development"; // Swap between development and college for different DBs
+    app.use(errorHandler());
 }
 if (process.env.NODE_ENV != "college") {
     var dotenv = require('dotenv').config();
@@ -29,10 +36,10 @@ function clientErrorHandler(err, req, res, next) {
     if (req.xhr) {
         res.status(500).send({error: 'Something failed!'});
     } else {
-        next(err);
+         next(err);
     }
 }
-function errorHandler(err, req, res, next) {
+function localErrorHandler(err, req, res, next) {
     res.status(500);
     res.render('error', {error: err});
 }
@@ -55,6 +62,15 @@ pgClient.connect(function (err) {
 app.use(bodyParser.json());                                         // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));     // parse application/vnd.api+json as json
 app.use(bodyParser.urlencoded({extended: true}));                 // parse application/x-www-form-urlencoded
+app.use(cookieParser());
+app.use(session({
+            secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
+            proxy: true,
+            resave: true,
+            saveUninitialized: true,
+            store: new pg.Client(config.db.url)
+	    })
+);
 
 // ======================  Method ======================
 app.use(methodOverride('X-HTTP-Method-Override'));
@@ -64,7 +80,7 @@ app.use(favicon(config.dir.favicon + '/favicon.ico'));
 app.use(morgan('dev'));                                             // Log HTTP Requests
 app.use(logErrors);
 app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(localErrorHandler);
 
 // ======================  Dirs  ======================
 app.set('view engine', 'jade');
