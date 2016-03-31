@@ -17,7 +17,11 @@ var errorHandler = require('errorHandler');
 var morgan = require('morgan');
 
 var pg = require('pg');
+
 var path = require('path');
+var fs = require('fs');
+
+var uuid = require('node-uuid');
 
 
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
@@ -36,7 +40,7 @@ function clientErrorHandler(err, req, res, next) {
     if (req.xhr) {
         res.status(500).send({error: 'Something failed!'});
     } else {
-         next(err);
+        next(err);
     }
 }
 function localErrorHandler(err, req, res, next) {
@@ -64,12 +68,15 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'}));     // parse appli
 app.use(bodyParser.urlencoded({extended: true}));                 // parse application/x-www-form-urlencoded
 app.use(cookieParser());
 app.use(session({
-            secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
-            proxy: true,
-            resave: true,
-            saveUninitialized: true,
-            store: new pg.Client(config.db.url)
-	    })
+        genid: function (req) {
+            return uuid();
+        },
+        secret: 'randomshit',
+        proxy: true,
+        resave: true,
+        saveUninitialized: true,
+        store: new pg.Client(config.db.url)
+    })
 );
 
 // ======================  Method ======================
