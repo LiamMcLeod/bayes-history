@@ -2,19 +2,19 @@ main
     .container-fluid
         .content-container
             h1.text-left User
-            if #{loggedIn}
-            .panel.panel-default
-                .panel-heading.text-center Log In
-                .panel-body.text-center
-                    form(action="/?log=in" method="POST" )
-                        .row
-                            .col-xs-6
-                                label Username
-                                br
-                                input#username(type="text" name="username" title="")
-                            .col-xs-6
-                                label Password
-                                br
-                                input#password(type="password" name="password" title="")
-                .panel-footer.text-right
-                    input.btn.btn-default.text-right(type="submit" value="Submit")
+            if loggedIn
+                .panel.panel-default
+                    .panel-heading.text-center Log In
+                    .panel-body.text-center
+                        form(action="/?log=in" method="POST" )
+                            .row
+                                .col-xs-6
+                                    label Username
+                                    br
+                                    input#username(type="text" name="username" title="")
+                                .col-xs-6
+                                    label Password
+                                    br
+                                    input#password(type="password" name="password" title="")
+                    .panel-footer.text-right
+                        input.btn.btn-default.text-right(type="submit" value="Submit")

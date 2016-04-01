@@ -78,12 +78,13 @@ body {
     width: 80%; }
 
   footer {
-    height: 120px;
-    background: #777;
+    height: 20px;
+    background: #3c3c3c;
     color: #eee; }
 
   .footer-above {
-    margin-top: 1%;
+    padding-top: 1%;
+    background: #777;
     height: 70px;
     text-align: center; }
 
@@ -94,7 +95,7 @@ body {
 
   .col-copyright {
     text-align: right;
-    margin: 35px 0 0;
+    margin: 23px 0 0;
     padding: 0 10px 0 0;
     line-height: normal;
     font-size: .8em; }
@@ -149,6 +150,9 @@ body {
     margin-top: 50px;
     height: 200px;
     background-position: bottom; }
+
+  footer {
+    height: 120px; }
 
   .no-mobile {
     display: block; }

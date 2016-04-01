@@ -10,28 +10,4 @@ html(lang="en-GB" id="index")
             include includes/user
             include includes/footer
             include includes/js
-        #hamburger.dropup.mobile-only
-            a.navbar-brand.pull-left(data-toggle="dropdown")
-                #icon
-                    span
-                    span
-                    span
-                    span
-            .dropdown-menu
-                ul.nav
-                    li
-                        a.active(href='/') Home
-                    li.divider
-                    li
-                        a(href='/') Random
-                    li.divider
-                    li
-                        a(href='/') About
-                    li.divider
-                        a(href='/') Contact
-                    li.divider
-                    li
-                        a(href='/') Log In
-                    li.divider
-                    li
-                        a(href='/') Sign Up
+        include includes/hamburger

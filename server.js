@@ -8,8 +8,6 @@ var openRouter = express.Router();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
-var session = require('express-session');
-
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
 
@@ -21,8 +19,9 @@ var pg = require('pg');
 var path = require('path');
 var fs = require('fs');
 
+var session = require('express-session');
+var pgStore = require('connect-pg-simple')(session);
 var uuid = require('node-uuid');
-
 
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
     process.env.NODE_ENV = "development"; // Swap between development and college for different DBs
@@ -66,6 +65,9 @@ pgClient.connect(function (err) {
 app.use(bodyParser.json());                                         // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));     // parse application/vnd.api+json as json
 app.use(bodyParser.urlencoded({extended: true}));                 // parse application/x-www-form-urlencoded
+
+
+// ======================   Sessions / Cookies  ======================
 app.use(cookieParser());
 app.use(session({
         genid: function (req) {
@@ -75,7 +77,7 @@ app.use(session({
         proxy: true,
         resave: true,
         saveUninitialized: true,
-        store: new pg.Client(config.db.url)
+        // store: new pgStore(config.db.url)
     })
 );
 

@@ -11,7 +11,7 @@ $( document ).ready(function() {
                 var orig = e.originalEvent;
                 var pos = $(this).position();
                 offset = {
-                    x: orig.changedTouches[0].pageX - pos.left,
+                    x: orig.changedTouches[0].pageX - pos.left
                 };
             };
             var moveMe = function(e) {
@@ -24,7 +24,7 @@ $( document ).ready(function() {
             this.bind("touchstart", start);
             this.bind("touchmove", moveMe);
         };
-
+        // TODO LEFT CANNOT BE < 0 or > 375
         $("#hamburger").draggable({ containment: "body" });
     }
 
