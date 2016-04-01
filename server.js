@@ -52,8 +52,11 @@ global.appRoot = path.resolve(__dirname);
 
 config = require('./app/config');
 
+
 // ====================== DB ======================
-pgClient = new pg.Client(config.db.url);
+var pgClient = new pg.Client(config.db.url);
+module.exports = pgClient;
+
 pgClient.connect(function (err) {
     if (err) {
         console.log("Database Connection Error.");
@@ -66,7 +69,7 @@ app.use(bodyParser.json());                                         // parse app
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));     // parse application/vnd.api+json as json
 app.use(bodyParser.urlencoded({extended: true}));                 // parse application/x-www-form-urlencoded
 
-//
+
 // ======================   Sessions / Cookies  ======================
 app.use(cookieParser());
 app.use(session({
@@ -113,4 +116,3 @@ app.listen(config.port.default).on('error', function (err) {
 });
 console.log("App running in " + process.env.NODE_ENV + " mode");
 exports = module.exports = app; 			                        // Public Exposure
-//exports = module.exports = pgClient;

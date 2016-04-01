@@ -2,11 +2,16 @@ module.exports = function (app) {
 
     var express = require('express');
     var fs = require('fs');
+    var acc = require('../app/accounts');
 
     app.use(express.static(appRoot + '/views', {defaultExtension: 'jade'}));
     app.use('/', express.static(__dirname + '/views'));
 
-
+    var $;
+    var userInit = {
+        loggedIn: false,
+        data: []
+    };
     /* ==========================================================
      * 			 			  Modules						 	*
      * ========================================================== */
@@ -17,12 +22,15 @@ module.exports = function (app) {
             return false;
         }
     };
+    function isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
 
-    function getResults(qQuery, results, res) {
-        qQuery.on('row', function (row) {
+    function getResults(pgQ, results, res) {
+        pgQ.on('row', function (row) {
             results.push(row);
         });
-        qQuery.on('end', function () {
+        pgQ.on('end', function () {
             if (results.isEmpty()) {
                 return res.status(404).json({message: "Error: Not Found."});
             }
@@ -39,15 +47,6 @@ module.exports = function (app) {
         err.status = 'Not Found';
     }
 
-    function exists(directory, callback) {
-        fs.stat(directory, function (err, stats) {
-            if (err && err.errno === 34) {
-                throw err;
-            } else {
-                return true;
-            }
-        });
-    }
 
     /* ==========================================================
      *		 			 Back-End API						 	*
@@ -71,11 +70,29 @@ module.exports = function (app) {
             // 	values: [vars]
         };
 
-        var qQuery = pgClient.query(qStr, function (err, result) {
+        var pgQ = pgClient.query(qStr, function (err, result) {
         });
 
-        return getResults(qQuery, req, res);
+        return getResults(pgQ, req, res);
 
+    });
+
+    app.post('/api/user', function (req, res) {
+        $ = req.session;
+
+        // Get user data from DB
+        $.user.data = acc.log(req);
+
+        if ($.user.data) {
+            $.user.loggedIn = true;
+        }
+        else {
+            $.user.loggedIn = false;
+        }
+
+        res.redirect('/user', 400, function (err) {
+                if (err) notFound(res);
+        })
     });
 
     /* ==========================================================
@@ -85,8 +102,8 @@ module.exports = function (app) {
     // test pages
     app.get('/test', function (req, res) {
 
-        var getReq='';
-        if (req.query['q']!=undefined){
+        var getReq = '';
+        if (req.query['q'] != undefined) {
             getReq = req.query['q'];
             console.log(getReq);
         }
@@ -99,8 +116,7 @@ module.exports = function (app) {
     });
 
     app.get('/', function (req, res) {
-       res.render("index.jade", {
-        }, function (err, result) {
+        res.render("index.jade", {}, function (err, result) {
             if (err) notFound(res);
             else res.send(result); // send rendered HTML back to client
         });
@@ -109,24 +125,19 @@ module.exports = function (app) {
 
     // File called
     app.get('/:file', function (req, res) {
-        //TODO q doesn't work on / ONLY index
-        var file = req.params.file;
-        var getReq='';
-        if (file === "user") {
-            if (req.cookies.user == undefined || req.cookies.pass == undefined) {
-                res.render('user', {loggedIn: false});
-            } else {
-                // attempt automatic login //
-
+            if (req.session.user === undefined) {
+                req.session.user = userInit;
             }
+            var file = req.params.file;
+            $ = req.session;
+            res.render(file + ".jade", {session: $.user}, function (err, result) {
+                if (err) notFound(res);
+                else {
+                    res.send(result)
+                }
+            })
         }
-        res.render(file + ".jade", {
-            getReq: getReq
-        }, function (err, result) {
-            if (err) notFound(res);
-            else res.send(result); // send rendered HTML back to client
-        });
-    });
+    );
 
 // Catch
     // Misc Errors
