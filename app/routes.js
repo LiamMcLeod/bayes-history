@@ -85,11 +85,15 @@ module.exports = function (app) {
     // test pages
     app.get('/test', function (req, res) {
 
-        var getReq = req.query['q'];
-        console.log(getReq);
+        var getReq='';
+        if (req.query['q']!=undefined){
+            getReq = req.query['q'];
+            console.log(getReq);
+        }
+        console.log(req.session);
 
         res.render('test.jade', {
-            getReq: getReq
+            session: req.session
         });
 
     });
