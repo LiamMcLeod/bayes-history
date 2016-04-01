@@ -65,13 +65,12 @@ body {
     height: 100%; }
 
   main .content-container {
-    min-height: 598px;
+    min-height: 370px;
     margin: 0 auto;
-    width: 75%; }
+    width: 100%; }
 
   main .panel {
-    width: 50%;
-    min-width: 525px;
+    width: 100%;
     margin: 8% auto -10% auto; }
 
   main form .row {
@@ -120,6 +119,15 @@ body {
   nav {
     display: block;
     background: rgba(21, 21, 21, 0.4); }
+
+  main .content-container {
+    min-height: 565px;
+    margin: 0 auto;
+    width: 80%; }
+
+  main .panel {
+    width: 50%;
+    min-width: 525px; }
 
   .no-mobile {
     display: block; }

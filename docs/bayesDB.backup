@@ -265,7 +265,7 @@ CREATE TABLE "User" (
     "UserId" integer NOT NULL,
     "OtherName" character(100),
     "LastName" character(50),
-    "EmaiAddress" character varying(150),
+    "EmailAddress" character varying(150),
     "Password" character varying(100),
     "Created" date
 );
@@ -283,10 +283,10 @@ COMMENT ON COLUMN "User"."UserId" IS 'UserId - Auto Incrementing';
 --
 -- TOC entry 2100 (class 0 OID 0)
 -- Dependencies: 176
--- Name: COLUMN "User"."EmaiAddress"; Type: COMMENT; Schema: public; Owner: -
+-- Name: COLUMN "User"."EmailAddress"; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON COLUMN "User"."EmaiAddress" IS 'User''s email address';
+COMMENT ON COLUMN "User"."EmailAddress" IS 'User''s email address';
 
 
 --

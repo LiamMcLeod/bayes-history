@@ -1,0 +1,4 @@
+exports = {
+    loggedIn: false,
+    data: []
+};

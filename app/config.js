@@ -35,4 +35,6 @@ config.db = {};
     else config.port.default = 8080;
     config.port.alternate = 3000;
 
+config.secret = 'dvorak';
+
 module.exports = config;
