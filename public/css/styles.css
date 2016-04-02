@@ -59,8 +59,7 @@ body {
 
   header {
     height: 150px;
-    background-size: 100%;
-    background-image: url("/public/img/SPC.jpg"); }
+    background-size: 100%; }
 
   main {
     height: 100%; }
