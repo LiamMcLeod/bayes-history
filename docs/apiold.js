@@ -1,8 +1,10 @@
 module.exports = function (apiRouter) {
-    var rModules = require('../modules/routeModules');
-    var libs = require('../modules/lib');
+    // String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+    // Array.prototype.isEmpty = function(){if(this.length===0) {return true;}else{return false;}};
+    var rModules = require('../app/modules/routeModules');
+    var libs = require('../app/modules/lib');
 
-    apiRouter.get('/', function (req, res) {
+    app.get('/', function (req, res) {
         var results = [];
         var param = {};
         param.pretty = false;
@@ -13,7 +15,7 @@ module.exports = function (apiRouter) {
         return res.json(api);
     });
 
-    apiRouter.get('/api', function (req, res) {
+    app.get('/api', function (req, res) {
         var results = [];
         var param = {};
         param.pretty = false;
@@ -26,7 +28,7 @@ module.exports = function (apiRouter) {
             }, null, 2) + "</pre>");
     });
 
-    apiRouter.get('/user', function (req, res) {
+    app.get('/api/user', function (req, res) {
         var results;
         // TODO QUERY STUFF
         if (results.isEmpty()) {
@@ -38,14 +40,14 @@ module.exports = function (apiRouter) {
         else return res.json(results);
     });
 
-    apiRouter.get('/logout', function (req, res) {
+    api.get('/api/logout', function (req, res) {
 
         res.redirect('/user', 400, function (err) {
             if (err) rModules.notFound(res);
         })
     });
 
-    apiRouter.post('/login', function (req, res) {
+    api.post('/api/login', function (req, res) {
 
 
         res.redirect('/user', 400, function (err) {

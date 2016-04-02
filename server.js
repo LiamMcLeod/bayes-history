@@ -6,8 +6,7 @@ var authRouter = express.Router();
 module.exports = authRouter;
 var openRouter = express.Router();
 module.exports = openRouter;
-var apiRouter = express.Router();
-module.exports = apiRouter;
+global.apiRouter;
 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -26,9 +25,9 @@ var fs = require('fs');
 
 var session = require('express-session');
 var pgStore = require('connect-pg-simple')(session);
+
 var uuid = require('node-uuid');
 
-var Sequelise = require('sequelize');
 
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
     process.env.NODE_ENV = "development"; // Swap between development and college for different DBs
@@ -62,7 +61,6 @@ config = require('./app/config');
 
 // ====================== DB ======================
 var pgClient = new pg.Client(config.db.url);
-// exports = pgClient;
 
 pgClient.connect(function (err) {
     if (err) {
@@ -71,9 +69,6 @@ pgClient.connect(function (err) {
     }
     else console.log("Database Connection Successful.");
 });
-
-var sequelise = new Sequelise(config.db.url);
-var userSchema = require('./app/models/User');
 // ======================   Body  ======================
 app.use(bodyParser.json());                                         // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));     // parse application/vnd.api+json as json
@@ -110,8 +105,9 @@ app.use('/public', express.static(config.dir.public));
 app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
-require('./app/routes')(app, apiRouter, pgClient); // parse app to routes
+require('./app/routes')(app, pgClient); // parse app to routes
 app.use(subdomain('api', apiRouter));
+
 // ====================== Listen ======================
 console.log('Express listening on ' + config.port.default);
 app.listen(config.port.default).on('error', function (err) {

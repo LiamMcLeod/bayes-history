@@ -1,5 +1,5 @@
-module.exports = function (app, apiRouter, pgClient) {
-     /* ==========================================================
+module.exports = function (app, pgClient) {
+    /* ==========================================================
      * 			 			  App 		            		 	*
      * ========================================================== */
     var express = require('express');
@@ -14,19 +14,17 @@ module.exports = function (app, apiRouter, pgClient) {
     /* ==========================================================
      *		 			 Back-End API						 	*
      * ========================================================== */
-
-     var api = require('./routes/api')(apiRouter);
-
+    global.apiRouter = express.Router();
+    require('./routes/api')(app);
+    /* ==========================================================
+     *		 			 Front-End API						 	*
+     * ========================================================== */
+    require('./routes/view')(app, userInit);
 
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */
-    var view = require('./routes/view')(app, userInit);
 
-    /* ==========================================================
-     *		 			 Front-End API						 	*
-     * ========================================================== */
-
-    var catchReq = require('./routes/catch')(app);
+    require('./routes/catch')(app);
 
 };
