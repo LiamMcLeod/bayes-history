@@ -19,6 +19,7 @@ module.exports = function (app, pgClient) {
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */
+    global.defRouter = express.Router();
     require('./routes/view')(app, userInit);
 
     /* ==========================================================

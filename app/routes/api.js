@@ -1,47 +1,37 @@
 module.exports = function (apiRouter) {
-    var rModules = require('../modules/routeModules');
-    var libs = require('../modules/lib');
-
-    apiRouter.get('/', function (req, res) {
-        var results = [];
-        var param = {};
-        param.pretty = false;
-        if (req.query != null) {
-            param.pretty = req.query['pretty'];
-        }
-        var api = {text: "API v0.0.1"};
-        return res.json(api);
-    });
+    // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+    // https://devdactic.com/restful-api-user-authentication-1/
+    var mod = require('../modules/routeModules');
+    // var libs = require('../modules/lib');
 
     apiRouter.get('/api', function (req, res) {
         var results = [];
-        var param = {};
-        param.pretty = false;
-        if (req.query != null) {
-            param.pretty = req.query['pretty'];
-        }
-        return res.send("<pre>" + JSON.stringify({
-                title: "API Version 0.0.1",
-                properties: {options: "/user"}
-            }, null, 2) + "</pre>");
+        var params = mod.checkParams(req, res);
+        results = {
+            title: "API Version 0.0.1",
+            properties: {options: "/user"}
+        };
+        mod.returnJSON(res, results, params);
     });
 
-    apiRouter.get('/user', function (req, res) {
+    apiRouter.get('api/user', function (req, res) {
         var results;
         // TODO QUERY STUFF
-        if (results.isEmpty()) {
-            return res.status(404).json({message: "Error: Not Found."});
-        }
-        if (param.pretty) {
-            return res.send("<pre>" + JSON.stringify(results, null, 2) + "</pre>");
-        }
-        else return res.json(results);
+        var params = mod.checkParams(req, res);
+        mod.returnJSON(res, results, params);
+    });
+
+    apiRouter.get('api/users', function (req, res) {
+        var results;
+        // TODO QUERY STUFF
+        var params = mod.checkParams(req, res);
+        mod.returnJSON(res, results, params);
     });
 
     apiRouter.get('/logout', function (req, res) {
 
-        res.redirect('/user', 400, function (err) {
-            if (err) rModules.notFound(res);
+        res.redirect('/', 400, function (err) {
+            if (err) mod.notFound(res);
         })
     });
 
@@ -49,9 +39,15 @@ module.exports = function (apiRouter) {
 
 
         res.redirect('/user', 400, function (err) {
-            if (err) rModules.notFound(res);
+            if (err) mod.notFound(res);
         })
     });
 
+
+    //Catch All
+    apiRouter.get('/api/*', function(req, res){
+        var results;
+        mod.returnJSON(res);
+    })
 
 };

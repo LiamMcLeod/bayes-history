@@ -4,8 +4,7 @@ const app = express();
 
 var authRouter = express.Router();
 module.exports = authRouter;
-var openRouter = express.Router();
-module.exports = openRouter;
+global.defRouter;
 global.apiRouter;
 
 var bodyParser = require('body-parser');
@@ -106,7 +105,9 @@ app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
 require('./app/routes')(app, pgClient); // parse app to routes
-app.use(subdomain('api', apiRouter));
+app.use('/', defRouter);
+app.use('/api', apiRouter);
+// app.use(subdomain('api', apiRouter));
 
 // ====================== Listen ======================
 console.log('Express listening on ' + config.port.default);
