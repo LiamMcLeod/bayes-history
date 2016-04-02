@@ -24,9 +24,10 @@ var fs = require('fs');
 
 var session = require('express-session');
 var pgStore = require('connect-pg-simple')(session);
-
 var uuid = require('node-uuid');
 
+var passport = require('passport');
+var passportLocal = require('passport-local').Strategy;
 
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
     process.env.NODE_ENV = "development"; // Swap between development and college for different DBs
@@ -87,6 +88,8 @@ app.use(session({
         store: new pgStore(config.db.url)
     })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 // ======================  Method ======================
 app.use(methodOverride('X-HTTP-Method-Override'));

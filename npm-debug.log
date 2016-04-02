@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run-script',
+1 verbose cli   'start' ]
+2 info using npm@3.8.3
+3 info using node@v5.10.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle BayesApp@0.0.1~prestart: BayesApp@0.0.1
+6 silly lifecycle BayesApp@0.0.1~prestart: no script for prestart, continuing
+7 info lifecycle BayesApp@0.0.1~start: BayesApp@0.0.1
+8 verbose lifecycle BayesApp@0.0.1~start: unsafe-perm in lifecycle true
+9 verbose lifecycle BayesApp@0.0.1~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\dual1ty\Desktop\Desktop\GIT\bayesTest\node_modules\.bin;C:\Program Files\nodejs;D:\Python34\;D:\Python34\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files (x86)\Livestreamer;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Livestreamer;D:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\Ruby22-x64\bin;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\3.2\bin;C:\Users\dual1ty\AppData\Local\.meteor\;C:\Users\dual1ty\Desktop\Desktop\tuts\Ruby\rbenv\bin;C:\Program Files\Java\jdk1.8.0_65\bin;D:\Program Files (x86)\Heroku;C:\Program Files\PostgreSQL\9.5\bin;C:\Users\dual1ty\AppData\Local\atom\bin;C:\Users\dual1ty\AppData\Roaming\Composer\vendor\bin;C:\php;C:\Users\dual1ty\AppData\Roaming\npm
+10 verbose lifecycle BayesApp@0.0.1~start: CWD: C:\Users\dual1ty\Desktop\Desktop\GIT\bayesTest
+11 silly lifecycle BayesApp@0.0.1~start: Args: [ '/d /s /c', 'node server' ]
+12 silly lifecycle BayesApp@0.0.1~start: Returned: code: 1  signal: null
+13 info lifecycle BayesApp@0.0.1~start: Failed to exec start script
+14 verbose stack Error: BayesApp@0.0.1 start: `node server`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:239:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at ChildProcess.emit (events.js:185:7)
+14 verbose stack     at maybeClose (internal/child_process.js:850:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid BayesApp@0.0.1
+16 verbose cwd C:\Users\dual1ty\Desktop\Desktop\GIT\bayesTest
+17 error Windows_NT 10.0.10586
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run-script" "start"
+19 error node v5.10.0
+20 error npm  v3.8.3
+21 error code ELIFECYCLE
+22 error BayesApp@0.0.1 start: `node server`
+22 error Exit status 1
+23 error Failed at the BayesApp@0.0.1 start script 'node server'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the BayesApp package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node server
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs BayesApp
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls BayesApp
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
