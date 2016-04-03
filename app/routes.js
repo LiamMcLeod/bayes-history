@@ -1,4 +1,7 @@
 module.exports = function (app, pgClient) {
+  // /https://github.com/stribny/auth-quickstart/blob/master/app/routers/appRouter.js
+  // https://github.com/stribny/auth-quickstart
+  //http://yifeed.com/passportjs-mysql-expressjs-authentication.html
     /* ==========================================================
      * 			 			  App 		            		 	*
      * ========================================================== */
@@ -21,9 +24,9 @@ module.exports = function (app, pgClient) {
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */
-    global.defRouter = express.Router();
+    global.appRouter = express.Router();
     require('./routes/view')(app, userInit);
-    app.use('/', defRouter);
+    app.use('/', appRouter);
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */

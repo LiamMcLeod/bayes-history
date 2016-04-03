@@ -106,7 +106,7 @@ body {
     width:50%;
     border-radius: 6px;
     padding:5%;
-    margin: 0px auto 10px auto
+    margin: 0px auto 10px auto;
   }
 
   //Main
@@ -227,7 +227,7 @@ body {
   footer .sm-logos {
     font-size: 2em;
   }
-footer  .col-copyright {
+  footer  .col-copyright {
     text-align: right;
     margin: 23px 0 0;
     padding: 0 10px 0 0;
@@ -323,9 +323,9 @@ footer  .col-copyright {
 
 /*============ NavIcon ==============*/
 #arrow {
-    width:30px;
-    height:30px;
-    margin-top:10px;
+  width:30px;
+  height:30px;
+  margin-top:10px;
 }
 #arrow span {
   display: block;

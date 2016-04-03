@@ -1,6 +1,5 @@
 module.exports = function () {
 
-
     var bcrypt = require('bcrypt-nodejs');
     var pg = require('pg');
 
@@ -30,13 +29,19 @@ module.exports = function () {
 
         },
 
-        findbyId: function () {
-
+        findbyId: function (what) {
+          var query = {
+            text: 'SELECT * FROM "Users" WHERE "UserId"=$1',
+             values: [what]
+          }
         },
 
-        findAll: function (res, req) {
-
-            pgClient.query('SELECT * FROM Users"', function (err, rows) {
+        findAll: function (res, req, comp, where, what) {
+          var query = {
+            text: 'SELECT * FROM "Users" WHERE $1 $2 $3',
+	           values: [where, comp, what]
+          }
+            pgClient.query('SELECT * FROM Users WHERE"', function (err, rows) {
                 if (err) throw err;
                 res.send(rows);
             });
