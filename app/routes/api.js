@@ -1,27 +1,32 @@
-module.exports = function (apiRouter) {
+  var mod = require('../modules/routeModules');
+  // var libs = require('../modules/lib');
+
+module.exports = function (express, app) {
     // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
     // https://devdactic.com/restful-api-user-authentication-1/
-    var mod = require('../modules/routeModules');
-    // var libs = require('../modules/lib');
 
-    apiRouter.get('/api', function (req, res) {
+    var apiRouter = express.Router();
+
+    apiRouter.get('/', function (req, res) {
         var results = [];
-        var params = mod.checkParams(req, res);
+        var param={};
+        param = mod.checkParams(req, res);
+        console.log(param);
         results = {
             title: "API Version 0.0.1",
             properties: {options: "/user"}
         };
-        mod.returnJSON(res, results, params);
+        mod.returnJSON(res, results, param);
     });
 
-    apiRouter.get('api/user', function (req, res) {
+    apiRouter.get('/user', function (req, res) {
         var results;
         // TODO QUERY STUFF
-        var params = mod.checkParams(req, res);
-        mod.returnJSON(res, results, params);
+        var param = mod.checkParams(req, res);
+        mod.returnJSON(res, results, param);
     });
 
-    apiRouter.get('api/users', function (req, res) {
+    apiRouter.get('/users', function (req, res) {
         var results;
         // TODO QUERY STUFF
         var params = mod.checkParams(req, res);
@@ -45,9 +50,10 @@ module.exports = function (apiRouter) {
 
 
     //Catch All
-    apiRouter.get('/api/*', function(req, res){
+    apiRouter.get('/*', function(req, res){
         var results;
         mod.returnJSON(res);
     })
 
+    return apiRouter;
 };

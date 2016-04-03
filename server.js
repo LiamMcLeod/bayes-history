@@ -4,8 +4,8 @@ const app = express();
 
 var authRouter = express.Router();
 module.exports = authRouter;
-global.defRouter;
-global.apiRouter;
+// global.appRouter;
+// global.apiRouter;
 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -86,7 +86,16 @@ app.use('/public', express.static(config.dir.public));
 // app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
-require('./app/routes')(app, pgClient);
+// require('./app/routes')(express, app);
+
+//Back-End
+var apiRouter = require('./app/routes/api')(express);
+app.use('/api', apiRouter);
+// app.use(subdomain('api', apiRouter));
+//Front-End
+var appRouter = require('./app/routes/view')(express);
+app.use('/', appRouter);
+
 
 // ====================== Listen ======================
 console.log('Express listening on ' + config.port.default);

@@ -50,10 +50,15 @@ function error(req, res, err) {
 
 }
 
-function checkParams(res, req) {
-  var param = {};
-  param.pretty = false;
-  if (req.query != null) {
+function checkPretty(req, res){
+  if (req.query['pretty']!=undefined) {
+    param.pretty = req.query['pretty'];
+  }
+}
+
+function checkParams(req, res) {
+  var param = {}
+  if (req.query!=undefined) {
     param.pretty = req.query['pretty'];
   }
   return param;
@@ -71,5 +76,6 @@ function returnJSON(res, results, param) {
 
 exports.getResults = getResults;
 exports.checkParams = checkParams;
+exports.checkPretty = checkPretty;
 exports.returnJSON = returnJSON;
 exports.error = error;
