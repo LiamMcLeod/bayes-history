@@ -16,6 +16,7 @@ module.exports = function () {
         lastNames: '',
         title: '',
 
+        parameter: '',
         // Methods
         hash: function (pass) {
             var salt = bcrypt.genSalt(8);
@@ -25,15 +26,20 @@ module.exports = function () {
             return bcrypt.compareSync(pass, this.password);
         },
 
-        findOne: function(){
+        findOne: function () {
 
         },
 
-        findbyId: function(){
+        findbyId: function () {
 
+        },
+
+        findAll: function (res, req) {
+
+            pgClient.query('SELECT * FROM Users"', function (err, rows) {
+                if (err) throw err;
+                res.send(rows);
+            });
         }
-
-    };
-
-
+    }
 };

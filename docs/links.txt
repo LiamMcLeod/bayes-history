@@ -2,3 +2,5 @@ http://www.javabeat.net/expressjs-session-store/
 https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/
 
 https://stormpath.com/blog/everything-you-ever-wanted-to-know-about-node-dot-js-sessions/
+
+http://stackoverflow.com/questions/8484404/what-is-the-proper-way-to-use-the-node-js-postgresql-module

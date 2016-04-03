@@ -1,4 +1,4 @@
-require('./lib');
+var lib = require('./lib');
 
 function getResults(pgQ, results, res) {
     pgQ.on('row', function (row) {
@@ -16,9 +16,14 @@ function getResults(pgQ, results, res) {
 }
 
 function notFound(res) {
-    res.render(appRoot + '/views/404.jade');
+    var $ = res.session;
+    res.render('404.jade', {session: $, bg:lib.rnd()});
     var err = new Error('404');
     err.status = 'Not Found';
+}
+
+function error(res) {
+    res.render('error.jade');
 }
 
 function checkParams(res, req) {

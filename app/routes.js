@@ -6,8 +6,8 @@ module.exports = function (app, pgClient) {
     var fs = require('fs');
     var lib = require('./modules/lib');
 
-    app.use(express.static(appRoot + '/views', {defaultExtension: 'jade'}));
-    app.use('/', express.static(__dirname + '/views'));
+    // app.use(express.static(appRoot + '/views', {defaultExtension: 'jade'}));
+    // app.use('/', express.static(__dirname + '/views'));
 
     var $;
     var userInit = require('./models/UserInit');
@@ -16,16 +16,19 @@ module.exports = function (app, pgClient) {
      * ========================================================== */
     global.apiRouter = express.Router();
     require('./routes/api')(app);
+
+    app.use('/api', apiRouter);
+    // app.use(subdomain('api', apiRouter));
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */
     global.defRouter = express.Router();
     require('./routes/view')(app, userInit);
-
+    app.use('/', defRouter);
     /* ==========================================================
      *		 			 Front-End API						 	*
      * ========================================================== */
 
-    require('./routes/catch')(app);
+    // require('./routes/catch')(app);
 
 };

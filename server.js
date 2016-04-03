@@ -85,11 +85,12 @@ app.use(session({
         proxy: true,
         resave: true,
         saveUninitialized: true,
-        store: new pgStore(config.db.url)
+        store: new pgStore(config.db.url),
+        cookie: {secure:true, maxAge:1800000}
     })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // ======================  Method ======================
 app.use(methodOverride('X-HTTP-Method-Override'));
@@ -104,13 +105,10 @@ app.use(localErrorHandler);
 // ======================  Dirs  ======================
 app.set('view engine', 'jade');
 app.use('/public', express.static(config.dir.public));
-app.use('/', express.static(config.dir.views));
+// app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
 require('./app/routes')(app, pgClient); // parse app to routes
-app.use('/', defRouter);
-app.use('/api', apiRouter);
-// app.use(subdomain('api', apiRouter));
 
 // ====================== Listen ======================
 console.log('Express listening on ' + config.port.default);

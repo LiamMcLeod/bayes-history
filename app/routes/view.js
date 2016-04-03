@@ -1,5 +1,6 @@
 module.exports = function (app, userInit) {
-    var rModules = require('../modules/routeModules');
+    var mod = require('../modules/routeModules');
+    var lib = require('../modules/lib');
     // test pages
     app.get('/test', function (req, res) {
         var getReq = '';
@@ -14,10 +15,31 @@ module.exports = function (app, userInit) {
         });
 
     });
+    app.get('/sess', function (req, res) {
+        $ = req.session;
+        if ($.views) {
+            $.views++;
+            res.setHeader('Content-Type', 'text/html');
+            res.write('<p>views: ' + $.views + '</p>');
+            res.write('<p>expires in: ' + ($.cookie.maxAge / 1000) + 's</p>');
+            res.end()
+        } else {
+            $.views = 1;
+            res.end('welcome to the session demo. refresh!')
+        }
+    });
+    app.get('', function (req, res) {
+        $ = req.session;
+        res.render("index.jade", {session: $, bg: lib.rnd()}, function (err, result) {
+            if (err) mod.notFound(res);
+            else res.send(result); // send rendered HTML back to client
+        });
 
+    });
     app.get('/', function (req, res) {
-        res.render("index.jade", {}, function (err, result) {
-            if (err) rModules.notFound(res);
+        $ = req.session;
+        res.render("index.jade", {session: $, bg: lib.rnd()}, function (err, result) {
+            if (err) mod.notFound(res);
             else res.send(result); // send rendered HTML back to client
         });
 
@@ -30,8 +52,8 @@ module.exports = function (app, userInit) {
             }
             var file = req.params.file;
             $ = req.session;
-            res.render(file + ".jade", {session: $.user}, function (err, result) {
-                if (err) rModules.notFound(res);
+            res.render(file + ".jade", {session: $.user, bg: lib.rnd()}, function (err, result) {
+                if (err) mod.notFound(res);
                 else {
                     res.send(result)
                 }
