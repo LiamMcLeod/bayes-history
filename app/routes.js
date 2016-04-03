@@ -28,6 +28,6 @@ module.exports = function (app, pgClient) {
      *		 			 Front-End API						 	*
      * ========================================================== */
 
-     require('./routes/catch')(app);
+     //require('./routes/catch')(app);
 
 };

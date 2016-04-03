@@ -159,10 +159,12 @@ body {
   // Nav
   nav {
     display: block;
-    background: rgba(21, 21, 21, 0.4);
+    height: 60px;
+    background: rgba(255, 255, 255, 1);
   }
   header {
-    //background-size: 100%;
+    margin-top: 50px;
+    background-position: center center;
   }
   main .content-container {
     //TODO MODDIFY THIS
@@ -208,17 +210,12 @@ body {
 @media only screen and (min-width: 1200px) {
   // Nav
   nav {
-    height: 60px;
-    background: #3c3c3c;
-    background: rgba(255, 255, 255, 1);
     border: 1px solid transparent;
   }
 
   //Header
   header {
-    margin-top: 50px;
     height: 250px;
-    background-position: center center;
   }
   //Main
 
