@@ -4,7 +4,6 @@ module.exports = function (app, pgClient) {
      * ========================================================== */
     var express = require('express');
     var fs = require('fs');
-    var lib = require('./modules/lib');
 
     // app.use(express.static(appRoot + '/views', {defaultExtension: 'jade'}));
     // app.use('/', express.static(__dirname + '/views'));
@@ -29,6 +28,6 @@ module.exports = function (app, pgClient) {
      *		 			 Front-End API						 	*
      * ========================================================== */
 
-    // require('./routes/catch')(app);
+     require('./routes/catch')(app);
 
 };

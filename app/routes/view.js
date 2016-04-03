@@ -31,7 +31,7 @@ module.exports = function (app, userInit) {
     app.get('', function (req, res) {
         $ = req.session;
         res.render("index.jade", {session: $, bg: lib.rnd()}, function (err, result) {
-            if (err) mod.notFound(res);
+            if (err) mod.error(req, res, err);
             else res.send(result); // send rendered HTML back to client
         });
 
@@ -39,7 +39,7 @@ module.exports = function (app, userInit) {
     app.get('/', function (req, res) {
         $ = req.session;
         res.render("index.jade", {session: $, bg: lib.rnd()}, function (err, result) {
-            if (err) mod.notFound(res);
+            if (err) mod.error(req, res, err);
             else res.send(result); // send rendered HTML back to client
         });
 
@@ -53,10 +53,9 @@ module.exports = function (app, userInit) {
             var file = req.params.file;
             $ = req.session;
             res.render(file + ".jade", {session: $.user, bg: lib.rnd()}, function (err, result) {
-                if (err) mod.notFound(res);
-                else {
-                    res.send(result)
-                }
+                if (err) mod.error(req, res, err);
+                else res.send(result)
+
             })
         }
     );

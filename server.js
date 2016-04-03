@@ -37,22 +37,6 @@ if (process.env.NODE_ENV != "college") {
     var dotenv = require('dotenv').config();
 }
 //  ===================== Config =====================                           // Import Configs for easy editing.
-function logErrors(err, req, res, next) {
-    console.error(err.stack);
-    next(err);
-}
-function clientErrorHandler(err, req, res, next) {
-    if (req.xhr) {
-        res.status(500).send({error: 'Something failed!'});
-    } else {
-        next(err);
-    }
-}
-function localErrorHandler(err, req, res, next) {
-    res.status(500);
-    res.render('error', {error: err});
-}
-
 // Application Root for absolute paths
 global.appRoot = path.resolve(__dirname);
 
@@ -98,9 +82,7 @@ app.use(favicon(config.dir.favicon + '/favicon.ico'));
 
 // ======================  Logging, Debugging & Errors ======================
 // app.use(morgan('dev'));                                             // Log HTTP Requests
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(localErrorHandler);
+
 
 // ======================  Dirs  ======================
 app.set('view engine', 'jade');

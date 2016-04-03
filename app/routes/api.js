@@ -31,7 +31,7 @@ module.exports = function (apiRouter) {
     apiRouter.get('/logout', function (req, res) {
 
         res.redirect('/', 400, function (err) {
-            if (err) mod.notFound(res);
+            if (err) mod.error(req, res, err);
         })
     });
 
@@ -39,7 +39,7 @@ module.exports = function (apiRouter) {
 
 
         res.redirect('/user', 400, function (err) {
-            if (err) mod.notFound(res);
+            if (err) mod.error(req, res, err);
         })
     });
 

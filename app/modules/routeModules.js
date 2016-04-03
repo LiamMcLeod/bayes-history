@@ -15,15 +15,28 @@ function getResults(pgQ, results, res) {
     });
 }
 
-function notFound(res) {
-    var $ = res.session;
-    res.render('404.jade', {session: $, bg:lib.rnd()});
-    var err = new Error('404');
-    err.status = 'Not Found';
-}
-
-function error(res) {
-    res.render('error.jade');
+function error(req, res, err, next) {
+    res.status(err.status || 500);
+    var ret = {
+        statusCode: 0,
+        message: '',
+        subtext: ''
+    };
+    if (err.message.contains('Failed to lookup view')) {
+        ret.statusCode = 404
+    }
+    if (ret.statusCode === 404) {
+        ret.message = "Page Not Found";
+        ret.subtext = "Sorry, but the page you were trying to view does not exist"
+    }
+    res.render('error', {
+        statusCode: ret.statusCode,
+        message: ret.message,
+        status: "Error: "+ret.statusCode,
+        subtext: ret.subtext,
+        error: err,
+        bg: lib.rnd()
+    });
 }
 
 function checkParams(res, req) {
@@ -36,7 +49,7 @@ function checkParams(res, req) {
 }
 
 function returnJSON(res, results, param) {
-    if (results ==[] || results == undefined || results == null) {
+    if (results == [] || results == undefined || results == null) {
         return res.status(404).json({message: "Error: Not Found."});
     }
     if (param.pretty) {
@@ -45,7 +58,7 @@ function returnJSON(res, results, param) {
     else return res.json(results);
 }
 
-exports.notFound = notFound;
 exports.getResults = getResults;
 exports.checkParams = checkParams;
 exports.returnJSON = returnJSON;
+exports.error = error;
