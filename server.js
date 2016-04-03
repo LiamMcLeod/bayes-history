@@ -33,13 +33,6 @@ if (!process.env.NODE_ENV) {
     var env = require('dotenv').config();
 }
 
-// var knex = require('knex')({
-//   client:'pg',
-//   connection: {host: process.env.DATABASE_URL}
-// });
-// var Bookshelf = require('bookshelf')(knex);
-
-
 if (process.env.NODE_ENV==="development"){
   app.use(errorHandler());
 }
@@ -47,13 +40,6 @@ if (process.env.NODE_ENV==="development"){
 // Application Root for absolute paths
 global.appRoot = path.resolve(__dirname);
 config = require('./app/config');
-console.log(config.db.dbms);
-console.log(config.db.user);
-console.log(config.db.pass);
-console.log(config.db.host);
-console.log(config.db.port);
-console.log(config.db.base);
-console.log(config.db.query);
 
 // ====================== DB ======================
 var pgClient = new pg.Client(config.db.url);
