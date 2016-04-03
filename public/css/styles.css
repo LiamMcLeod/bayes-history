@@ -38,6 +38,8 @@ body {
     width: 100%;
     display: none;
     box-shadow: 0 6px 2px 0 rgba(0, 0, 0, 0.19); }
+  nav a {
+    color: #3c3c3c; }
   .menu-circle {
     position: fixed;
     bottom: 0;
