@@ -5,17 +5,17 @@ $( document ).ready(function() {
   function toggleHide(id) {
       $(id).toggleClass('hide');
   };
-  function toggleDisplay(id) {
-      $(id).css('display:block');
-  };
+
     if (screen.width <= 375){
         $('#icon').click(function() {
             $(this).toggleClass('open');
+            $('.menu-circle.right').toggleClass('hide');
             $('#mobile-menu').toggleClass('hide');
         });
         $('#mobile-menu').click(function() {
             $(this).toggleClass('hide');
             $('#icon').toggleClass('open');
+            $('.menu-circle.right').toggleClass('hide');
         });
         $('#arrow').click(function() {
             // $(this).toggleClass('open');
