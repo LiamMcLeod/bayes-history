@@ -11,7 +11,6 @@ module.exports = function (express, app) {
         var results = [];
         var param={};
         param = mod.checkParams(req, res);
-        console.log(param);
         results = {
             title: "API Version 0.0.1",
             properties: {options: "/user"}
