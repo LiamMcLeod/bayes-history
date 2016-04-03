@@ -25,6 +25,10 @@ module.exports = function () {
             return bcrypt.compareSync(pass, this.password);
         },
 
+        find : function () {
+            
+        }
+
         findOne: function () {
 
         },

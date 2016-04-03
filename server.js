@@ -29,28 +29,37 @@ var uuid = require('node-uuid');
 var passport = require('passport');
 var passportLocal = require('passport-local').Strategy;
 
-if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === null || process.env.NODE_ENV === '') {
-    process.env.NODE_ENV = "development"; // Swap between development and college for different DBs
-    app.use(errorHandler());
+if (!process.env.NODE_ENV) {
+    var env = require('dotenv').config();
 }
-if (process.env.NODE_ENV != "college") {
-    var dotenv = require('dotenv').config();
+
+// var knex = require('knex')({
+//   client:'pg',
+//   connection: {host: process.env.DATABASE_URL}
+// });
+// var Bookshelf = require('bookshelf')(knex);
+
+
+if (process.env.NODE_ENV==="development"){
+  app.use(errorHandler());
 }
 //  ===================== Config =====================                           // Import Configs for easy editing.
 // Application Root for absolute paths
 global.appRoot = path.resolve(__dirname);
-
 config = require('./app/config');
-
+console.log(config.db.dbms);
+console.log(config.db.user);
+console.log(config.db.pass);
+console.log(config.db.host);
+console.log(config.db.port);
+console.log(config.db.base);
+console.log(config.db.query);
 
 // ====================== DB ======================
 var pgClient = new pg.Client(config.db.url);
 
 pgClient.connect(function (err) {
-    if (err) {
-        console.log("Database Connection Error.");
-        //throw err; // Database Connection Error
-    }
+    if (err) console.log("Database Connection Error.");
     else console.log("Database Connection Successful.");
 });
 // ======================   Body  ======================
@@ -73,6 +82,7 @@ app.use(session({
         cookie: {secure:true, maxAge:1800000}
     })
 );
+
 // app.use(passport.initialize());
 // app.use(passport.session());
 
@@ -90,7 +100,7 @@ app.use('/public', express.static(config.dir.public));
 // app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
-require('./app/routes')(app, pgClient); // parse app to routes
+require('./app/routes')(app, pgClient);
 
 // ====================== Listen ======================
 console.log('Express listening on ' + config.port.default);
@@ -98,8 +108,7 @@ app.listen(config.port.default).on('error', function (err) {
     if (err) { // Try Alternate Port
         console.log('Error: ' + config.port.default + ' in use.');
         app.listen(config.port.alternate).on('error', function (err) {
-            if (err)
-                throw err;                                          // port 8080 and portAlt 3000 in use
+            if (err) throw err;                                          // port 8080 and portAlt 3000 in use
         });
         console.log('Express listening on ' + config.port.alternate);
     }
