@@ -3,7 +3,7 @@ var lib = require('../modules/lib');
 
 module.exports = function (express, app) {
     // test pages
-    appRouter = express.Router();
+    var appRouter = express.Router();
 
     appRouter.get('/', function (req, res) {
         $ = req.session;

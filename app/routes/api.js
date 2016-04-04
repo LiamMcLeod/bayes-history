@@ -1,9 +1,7 @@
   var mod = require('../modules/routeModules');
-  // var libs = require('../modules/lib');
+  var User = require('../models/User');
 
-module.exports = function (express, app) {
-    // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
-    // https://devdactic.com/restful-api-user-authentication-1/
+module.exports = function (express, app, client) {
 
     var apiRouter = express.Router();
 
@@ -40,6 +38,18 @@ module.exports = function (express, app) {
     });
 
     apiRouter.post('/login', function (req, res) {
+        var result=[];
+        var o = {};
+        o.user = req.body.username.toLowerCase();
+        o.pass = req.body.password;
+        // console.log(o);
+
+        result = User.findOne(o.user);
+        //todo constructor
+        //   result = new User();
+        //     result.findOne(o.user);
+        //https://css-tricks.com/understanding-javascript-constructors/
+
 
 
         res.redirect('/user', 400, function (err) {
@@ -52,7 +62,7 @@ module.exports = function (express, app) {
     apiRouter.get('/*', function(req, res){
         var results;
         mod.returnJSON(res);
-    })
+    });
 
     return apiRouter;
 };

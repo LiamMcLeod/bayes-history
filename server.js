@@ -42,9 +42,9 @@ global.appRoot = path.resolve(__dirname);
 config = require('./app/config');
 
 // ====================== DB ======================
-var pgClient = new pg.Client(config.db.url);
+var client = new pg.Client(config.db.url);
 
-pgClient.connect(function (err) {
+client.connect(function (err) {
     if (err) console.log("Database Connection Error.");
     else console.log("Database Connection Successful.");
 });
@@ -79,21 +79,18 @@ app.use(favicon(config.dir.favicon + '/favicon.ico'));
 // ======================  Logging, Debugging & Errors ======================
 // app.use(morgan('dev'));                                             // Log HTTP Requests
 
-
 // ======================  Dirs  ======================
 app.set('view engine', 'jade');
 app.use('/public', express.static(config.dir.public));
-// app.use('/', express.static(config.dir.views));
 
 // ====================== Routes ======================
-// require('./app/routes')(express, app);
 
 //Back-End
-var apiRouter = require('./app/routes/api')(express);
+var apiRouter = require('./app/routes/api')(express, client);
 app.use('/api', apiRouter);
 // app.use(subdomain('api', apiRouter));
 //Front-End
-var appRouter = require('./app/routes/view')(express);
+var appRouter = require('./app/routes/view')(express, client);
 app.use('/', appRouter);
 
 

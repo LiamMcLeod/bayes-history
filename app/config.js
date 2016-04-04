@@ -18,7 +18,7 @@ config.dir = {};
 
 config.db = {};
     if (process.env.NODE_ENV) {
-      var db = process.env.DATABASE_URL
+      var db = process.env.DATABASE_URL;
         config.db.url = db;
         var t = db.indexOf('//')+2; // Postgress://
         var u = db.indexOf(':', t); // Username

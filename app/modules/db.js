@@ -30,7 +30,7 @@ module.exports.addNewBook = function(body, callback){
       book:result
     });
   });
-}
+};
 
 module.exports.editBook = function(body, isbn, callback){
   Book.findOne({isbn: isbn}, function(err, result){
