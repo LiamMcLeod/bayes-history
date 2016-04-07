@@ -27,7 +27,7 @@ config.db = {};
         var x =db.indexOf('/', w);  //  pass
         var y =db.indexOf('?', x);                //tablename
         var z = db.length;                          // queries
-        config.db.dbms = db.substring(0, t)
+        config.db.dbms = db.substring(0, t);
         config.db.user = db.substring(t, u);
         config.db.pass = db.substring(u+1, v);
         config.db.host = db.substring(v+1, w);
@@ -50,7 +50,7 @@ config.db = {};
 
     config.port = {};
     // Default ports
-    config.port.default = process.env.PORT || 8080 || 80
+    config.port.default   = process.env.PORT || 8080 || 80;
     config.port.alternate = 3000;
 
 config.secret = 'dvorak';

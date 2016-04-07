@@ -1,8 +1,8 @@
 var mod = require('../modules/routeModules');
-// var User = require('../models/User');
+var User = require('../models/User');
+// var jwt = require('jsonwebtoken');
+
 // var User = require('../models/User').User;
-var User = require('../User');
-var jwt = require('jsonwebtoken');
 
 module.exports = function (express) {
 
@@ -46,19 +46,27 @@ module.exports = function (express) {
         o.user = req.body.username;
         o.pass = req.body.password;
 
+        if (!o.user) {
+            mod.returnJSON(res, {success: false, message: "Username empty"})
+        }
+        if (!o.pass) {
+            mod.returnJSON(res, {success: false, message: "Password empty"})
+        }
+
 
         // o.exists = user.findUser(o);
-        user.findUser(o, function (err, found) {
+        user.findUser(o, function (err, found, userData) {
             if (err) throw err;
             if (found) {
+                // console.log(data);
                 user.validate(o, function (valid) {
                     // console.log(valid);
                     if (valid) {
                         var obj = {};
                         user = user.getResults();
                         //TODO JSON Web Token;
-                        for (var key in user) {
-                            obj[key] = user[key];
+                        for (var key in userData) {
+                            obj[key] = userData[key];
                         }
                         for (var key in obj) {
                             if (obj[key].trim) {
@@ -66,28 +74,14 @@ module.exports = function (express) {
                             }
                         }
 
-                        // obj.ID = user.userId;
-                        // obj.Title = user.title;
-                        // obj.LastName = user.lastName;
-                        // obj.OtherNames = user.otherNames;
-                        // obj.EmailAddress=user.emailAddress;
-                        // obj.Username = user.username;
-                        // obj.Role = user.role;
-                        // obj.DoB = user.doB;
-                        // obj.Created = user.created;
-                        for (var key in obj) {
-                            if (obj[key].trim) {
-                                obj[key] = obj[key].trim();
-                            }
-                        }
                         // req.session.user = user.getResults();
                         mod.returnJSON(res, obj)
                     } else {
-                        mod.returnJSON(res, [])
+                        mod.returnJSON(res, {success: false, message: "Password incorrect"})
                     }
                 })
             }
-            else mod.returnJSON(res, [])
+            else mod.returnJSON(res, {success: false, message: "Username does not exist"})
         });
     });
 
@@ -100,7 +94,7 @@ module.exports = function (express) {
     return apiRouter;
 };
 
-// obj.EmailAddress=user.emailAddress;
+//                         obj.EmailAddress=user.emailAddress;
 //                         obj.Username = user.username;
 //                         obj.Created = user.created;
 //                         obj.DoB = user.doB;

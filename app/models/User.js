@@ -1,38 +1,28 @@
-var lib = require('./modules/lib');
+var lib = require('./../modules/lib');
 var bcrypt = require('bcrypt-nodejs');
-// var pg = require('pg').native;
 var pg = require('pg');
-var cli = new pg.Client;
-// var pgSync = require('pg-sync');
-// var client = new pgN();
-function User() {
-    this.userId = -1;
-    this.emailAddress = '';
-    this.password = '';
-    this.created = '';
-    this.otherNames = '';
-    this.lastName = '';
-    this.title = '';
-    this.doB = '';
-    this.role = '';
-    this.username = '';
 
-    // this.set = function (prop, val) {
-    //     this[prop] = val;
-    // };
-    // this.get = function (prop, val) {
-    //     return this[prop] = val;
-    // };
+function User() {
+    this.UserId = -1;
+    this.EmailAddress = '';
+    this.Password = '';
+    this.Created = '';
+    this.OtherName = '';
+    this.LastName = '';
+    this.Title = '';
+    this.DateOfBirth = '';
+    this.Role = '';
+    this.Username = '';
 }
 
 // Methods
-User.prototype.hash = function (pass) {
+User.prototype.hash = function (o) {
     var salt = bcrypt.genSaltSync(8);
-    return bcrypt.hashSync(pass, salt)
+    return bcrypt.hashSync(o.pass, salt)
 };
 
 User.prototype.validate = function (o, callback) {
-    callback(bcrypt.compareSync(o.pass, User.password));
+    callback(bcrypt.compareSync(o.pass, User.Password));
 };
 
 User.prototype.findAll = function () {
@@ -66,7 +56,6 @@ User.prototype.findUser = function (o, callback) {
         /* if Connection Callback Error */
         if (err) {
             console.log(err);
-            // return res.status(500).json({success: false, data: err});
         }
         /* CLient runs query */
         var q = client.query(query, function (err, result) {
@@ -83,33 +72,31 @@ User.prototype.findUser = function (o, callback) {
         q.on('end', function (result) {
             done();
             var found = false;
-            // console.log(result.rows[0]);
             if (result.rows[0] != undefined) {
                 setResults(result);
                 found = true;
             }
             else found = false;
-            callback(error, found);
+            callback(error, found, result.rows[0]);
         });
     });
 };
 
 
 setResults = function (results) {
-    // console.log(results.rows[0]);
-    set("userId", results.rows[0].UserId);
-    set("emailAddress", results.rows[0].EmailAddress);
-    set("password", results.rows[0].Password);
-    set("created", results.rows[0].Created);
-    set("otherNames", results.rows[0].OtherName);
-    set("lastName", results.rows[0].LastName);
-    set("title", results.rows[0].Title);
-    set("doB", results.rows[0].DateOfBirth);
-    set("role", results.rows[0].Role);
-    set("username", results.rows[0].Username);
+    set("UserId", results.rows[0].UserId);
+    set("EmailAddress", results.rows[0].EmailAddress);
+    set("Password", results.rows[0].Password);
+    set("Created", results.rows[0].Created);
+    set("OtherNames", results.rows[0].OtherName);
+    set("LastName", results.rows[0].LastName);
+    set("Title", results.rows[0].Title);
+    set("DateOfBirth", results.rows[0].DateOfBirth);
+    set("Role", results.rows[0].Role);
+    set("Username", results.rows[0].Username);
 };
 
-User.prototype.getResults = function (){
+User.prototype.getResults = function () {
     return User;
 };
 
@@ -118,11 +105,6 @@ User.prototype.findbyId = function (id) {
         text: 'SELECT * FROM "User" WHERE "UserId"=$1',
         values: [id]
     };
-    client.query(query, function (err, row) {
-        if (err) throw err;
-
-    });
-    return '';
 };
 
 User.prototype.find = function (where, op, what) {
@@ -130,11 +112,6 @@ User.prototype.find = function (where, op, what) {
         text: 'SELECT * FROM "User" WHERE $1 $2 $3',
         values: [where, op, what]
     };
-    client.query(query, function (err, row) {
-        if (err) throw err;
-
-    });
-    return '';
 };
 
 function set(prop, val) {

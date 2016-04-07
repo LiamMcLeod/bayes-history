@@ -1,4 +1,4 @@
-require('./../User');
+require('./User');
 exports = function () {
 
     function getParams() {
