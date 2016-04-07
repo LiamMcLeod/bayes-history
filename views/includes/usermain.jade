@@ -7,16 +7,33 @@ main
                     .panel.panel-default
                         .panel-heading.text-center Log In
                         .panel-body.text-center
-                                .row
-                                    .col-sm-6
-                                        label Username:
-                                        br
-                                        input#email(type="username" name="username" title="")
-                                    .col-sm-6
-                                        label Password:
-                                        br
-                                        input#password(type="password" name="password" title="")
-                        .panel-footer.text-right
+                            .row
+                                .col-sm-6
+                                    label Username:
+                                    br
+                                    input#email(type="username" name="username" title="")
+                                .col-sm-6
+                                    label Password:
+                                    br
+                                    input#password(type="password" name="password" title="")
+                        .panel-footer
+                            .col-xs-6.text-left
+                                if !status
+                                    #{status}
+                                else
+                                    span ...
+                            .col-xs-6.text-right
                                 input.btn.btn-default.text-right(type="submit" value="Submit")
             else
-                h1 Hello #{firstName} #{lastName}
+                .content-container.content-box
+                    pre Title:          #{title}
+                    pre Name:           #{firstName} #{lastName}
+                    pre DoB:            #{doB}
+                    br
+                    pre Username:       #{username}
+                    pre Email Address   #{emailAddress}
+                    br
+                    pre Privileges:     #{role}
+                    pre Created:        #{created}
+
+
