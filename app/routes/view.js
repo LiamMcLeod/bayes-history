@@ -6,7 +6,7 @@ module.exports = function (express) {
     var appRouter = express.Router();
 
     appRouter.get('/', function (req, res) {
-        $ = req.session;
+        var $ = req.session;
         res.render("index", {session: $, bg: lib.rnd()}, function (err, result) {
             if (err) mod.error(req, res, err);
             else res.send(result); // send rendered HTML back to client
@@ -28,7 +28,7 @@ module.exports = function (express) {
 
     });
     appRouter.get('/sess', function (req, res) {
-        $ = req.session;
+        var $ = req.session;
         if ($.views) {
             $.views++;
             res.setHeader('Content-Type', 'text/html');
@@ -41,7 +41,7 @@ module.exports = function (express) {
         }
     });
     appRouter.get('', function (req, res) {
-        $ = req.session;
+        var $ = req.session;
         res.render("index", {session: $, bg: lib.rnd()}, function (err, result) {
             if (err) mod.error(req, res, err);
             else res.send(result); // send rendered HTML back to client

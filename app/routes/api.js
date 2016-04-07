@@ -34,7 +34,8 @@ module.exports = function (express) {
     });
 
     apiRouter.get('/logout', function (req, res) {
-        // req.session = null;
+        req.session.destroy();
+        // delete req.session;
         res.redirect('/', 400, function (err) {
             if (err) mod.error(req, res, err);
         })
