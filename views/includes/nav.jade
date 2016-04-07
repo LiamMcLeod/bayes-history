@@ -16,7 +16,13 @@ nav.navbar.navbar-fixed-top
                 li
                     a(href='/contact') Contact
             ul.nav.navbar-nav.navbar-right.nav-list
-                li
-                    a(href='/') Sign Up &nbsp;
-                li
-                    a(href='/user') Log In &nbsp;
+                if !loggedIn
+                    li
+                        a(href='/') Sign Up &nbsp;
+                    li
+                        a(href='/user') Log In &nbsp;
+                else
+                    li
+                        a(href='/profile/#{userId}') #{username}
+                    li
+                        a(href='/api/logout')  Log Out

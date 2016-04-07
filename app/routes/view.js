@@ -1,7 +1,7 @@
 var mod = require('../modules/routeModules');
 var lib = require('../modules/lib');
 
-module.exports = function (express, app) {
+module.exports = function (express) {
     // test pages
     var appRouter = express.Router();
 
@@ -51,16 +51,47 @@ module.exports = function (express, app) {
 
     // File called
     appRouter.get('/:file', function (req, res) {
-            if (req.session.user === undefined) {
-            }
-            var file = req.params.file;
-            $ = req.session;
-            res.render(file, {session: $.user, bg: lib.rnd()}, function (err, result) {
+        // if (req.session.loggedIn === undefined) {
+        //     req.session.loggedIn=false;
+        // }
+        var file = req.params.file;
+
+        var $ = req.session;
+        console.log($.loggedIn);
+
+        if ($.loggedIn) {
+            res.render(file, {
+                bg: lib.rnd(),
+                session: $,
+                status: $.status,
+                loggedIn: $.loggedIn,
+                userId: $.user.UserId,
+                username: $.user.Username,
+                title: $.user.Title,
+                firstName: $.user.FirstName,
+                lastName: $.user.LastName,
+                emailAddress: $.user.EmailAddress,
+                doB: $.user.DateOfBirth,
+                created: $.user.Created,
+                role: $.user.Role
+            }, function (err, result) {
                 if (err) mod.error(req, res, err);
                 else res.send(result)
 
-            })
-        });
+            });
+        }
+        else {
+            res.render(file, {
+                bg: lib.rnd(),
+                status: $.status,
+                loggedIn: $.loggedIn
+            }, function (err, result) {
+                if (err) mod.error(req, res, err);
+                else res.send(result)
+            });
+        }
+
+    });
 
     return appRouter;
 };

@@ -34,7 +34,7 @@ module.exports = function (express) {
     });
 
     apiRouter.get('/logout', function (req, res) {
-
+        // req.session = null;
         res.redirect('/', 400, function (err) {
             if (err) mod.error(req, res, err);
         })
@@ -47,13 +47,17 @@ module.exports = function (express) {
         o.pass = req.body.password;
 
         if (!o.user) {
-            mod.returnJSON(res, {success: false, message: "Username empty"})
+            req.session.loggedIn = false;
+            req.session.status = 'Username empty.';
+            res.redirect(400, '/user');
+            // mod.returnJSON(res, {success: false, message: "Username empty"})
         }
         if (!o.pass) {
-            mod.returnJSON(res, {success: false, message: "Password empty"})
+            req.session.loggedIn = false;
+            req.session.status = 'Password empty.';
+            res.redirect(400, '/user');
+            // mod.returnJSON(res, {success: false, message: "Password empty"})
         }
-
-
         // o.exists = user.findUser(o);
         user.findUser(o, function (err, found, userData) {
             if (err) throw err;
@@ -63,7 +67,6 @@ module.exports = function (express) {
                     // console.log(valid);
                     if (valid) {
                         var obj = {};
-                        user = user.getResults();
                         //TODO JSON Web Token;
                         for (var key in userData) {
                             obj[key] = userData[key];
@@ -73,15 +76,25 @@ module.exports = function (express) {
                                 obj[key] = obj[key].trim();
                             }
                         }
-
-                        // req.session.user = user.getResults();
-                        mod.returnJSON(res, obj)
+                        console.log(valid);
+                        req.session.loggedIn = true;
+                        req.session.user = userData;
+                        req.session.status = 'Success!';
+                        res.redirect(302, '/user');
                     } else {
-                        mod.returnJSON(res, {success: false, message: "Password incorrect"})
+                        req.session.loggedIn = false;
+                        req.session.status = 'Incorrect password.';
+                        res.redirect(400, '/user');
+                        // mod.returnJSON(res, {success: false, message: "Password incorrect"})
                     }
                 })
             }
-            else mod.returnJSON(res, {success: false, message: "Username does not exist"})
+            else {
+                req.session.loggedIn = false;
+                req.session.status = 'Incorrect username.';
+                res.redirect(400, '/user');
+                // mod.returnJSON(res, {success: false, message: "Username does not exist"})
+            }
         });
     });
 

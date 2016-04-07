@@ -65,10 +65,9 @@ app.use(session({
         resave: true,
         saveUninitialized: true,
         store: new pgStore(config.db.url),
-        cookie: {secure:true, maxAge:1800000}
+        cookie: {/*secure:true, */maxAge:1800000}
     })
 );
-
 // app.use(passport.initialize());
 // app.use(passport.session());
 

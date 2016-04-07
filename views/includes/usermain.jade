@@ -2,22 +2,21 @@ main
     .container-fluid
         .content-container
             h1.text-left  User
-                            //- var $ = {session};
-                            //    if  $.session.loggedIn==true
-                            //        h1 Welcome #{$.session.loggedIn}
-                            //    else
-            form(action="/api/login" method="POST" )
-                .panel.panel-default
-                    .panel-heading.text-center Log In
-                    .panel-body.text-center
-                            .row
-                                .col-sm-6
-                                    label Username:
-                                    br
-                                    input#email(type="username" name="username" title="")
-                                .col-sm-6
-                                    label Password:
-                                    br
-                                    input#password(type="password" name="password" title="")
-                    .panel-footer.text-right
-                            input.btn.btn-default.text-right(type="submit" value="Submit")
+            if !loggedIn
+                form(action="/api/login" method="POST" )
+                    .panel.panel-default
+                        .panel-heading.text-center Log In
+                        .panel-body.text-center
+                                .row
+                                    .col-sm-6
+                                        label Username:
+                                        br
+                                        input#email(type="username" name="username" title="")
+                                    .col-sm-6
+                                        label Password:
+                                        br
+                                        input#password(type="password" name="password" title="")
+                        .panel-footer.text-right
+                                input.btn.btn-default.text-right(type="submit" value="Submit")
+            else
+                h1 Hello #{username}

@@ -7,6 +7,7 @@ function User() {
     this.EmailAddress = '';
     this.Password = '';
     this.Created = '';
+    this.FirstName = '';
     this.OtherName = '';
     this.LastName = '';
     this.Title = '';
@@ -94,6 +95,7 @@ setResults = function (results) {
     set("DateOfBirth", results.rows[0].DateOfBirth);
     set("Role", results.rows[0].Role);
     set("Username", results.rows[0].Username);
+    set("FirstName", results.rows[0].FirstName);
 };
 
 User.prototype.getResults = function () {
