@@ -68,6 +68,10 @@ app.use(session({
         cookie: {/*secure:true, */maxAge:1800000}
     })
 );
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+  session.cookie.secure = true;// serve secure cookies
+}
 // app.use(passport.initialize());
 // app.use(passport.session());
 
