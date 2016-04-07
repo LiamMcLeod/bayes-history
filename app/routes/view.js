@@ -1,5 +1,6 @@
 var mod = require('../modules/routeModules');
 var lib = require('../modules/lib');
+var User = require('../models/User');
 
 module.exports = function (express) {
     // test pages
@@ -29,9 +30,15 @@ module.exports = function (express) {
     });
     appRouter.get('/sess', function (req, res) {
         var $ = req.session;
+        var user = new User();
+        if (req.query) {
+            var o = req.query;
+            var x = user.hash(o);
+        }
         if ($.views) {
             $.views++;
             res.setHeader('Content-Type', 'text/html');
+            res.write(x);
             res.write('<p>views: ' + $.views + '</p>');
             res.write('<p>expires in: ' + ($.cookie.maxAge / 1000) + 's</p>');
             res.end()
