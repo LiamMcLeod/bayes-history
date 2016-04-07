@@ -64,7 +64,7 @@ module.exports = function (express) {
         var file = req.params.file;
 
         var $ = req.session;
-        console.log($.loggedIn);
+        // console.log($.loggedIn);
 
         if ($.loggedIn) {
             res.render(file, {
