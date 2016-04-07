@@ -85,7 +85,7 @@ body {
     width: 50%;
     border-radius: 6px;
     padding: 5%;
-    margin: 0px auto 10px auto; }
+    margin: 0 auto 10px auto; }
 
   main {
     height: 100%; }
@@ -188,6 +188,9 @@ body {
   main .panel {
     width: 50%;
     min-width: 525px; }
+
+  footer .center-block a {
+    color: #fff; }
 
   footer .sm-logos {
     font-size: 2em; }
