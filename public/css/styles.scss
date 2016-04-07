@@ -58,31 +58,35 @@ body {
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width: 320px) {
-
+  /* sticky {
+  /* Negative indent footer by its height
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height
+  padding: 0 0 60px;
+  */
   // Nav
   nav {
-    width:100%;
+    width: 100%;
     display: none;
     box-shadow: 0 6px 2px 0 rgba(0, 0, 0, 0.19);
   }
   nav a {
-    color:#3c3c3c;
+    color: #3c3c3c;
   }
   .menu-circle {
     position: fixed;
-    bottom: 0;
-    border: 1px #eee solid;
-    padding: 5px 5px 10px 5px;
-    border-radius: 50%;
-    background: #3c3c3c;
+    bottom: 40px;
+    padding: 1px 1px 3px 1px;
+    border-radius: 10px;
+    background: rgba(121, 121, 121, 0.8);
   }
   .left {
-    right:auto;
-    left: 0;
+    right: auto;
+    left: 10px;
   }
   .right {
-    left:auto;
-    right: 0;
+    left: auto;
+    right: 10px;
   }
 
   .open > .dropdown-menu {
@@ -98,14 +102,20 @@ body {
     height: 150px;
     background-size: 100%;
     background-image: url("/public/img/bg/bg1.jpg"); // Fallback
-    padding-top:20px;
+    padding-top: 20px;
   }
 
-  .header-logo{
+  #search-page {
+    //min-height: 1000px;
+    max-height: 1800px;
+    height: 1010px;
+  }
+
+  .header-logo {
     background: rgba(255, 255, 255, 1);
-    width:50%;
+    width: 50%;
     border-radius: 6px;
-    padding:5%;
+    padding: 5%;
     margin: 0px auto 10px auto;
   }
 
@@ -127,25 +137,25 @@ body {
     margin: auto;
     width: 80%;
   }
-  #mobile-menu{
-    left:0;
-    top:0;
-    position:fixed;
-    height:100%;
-    width:100%;
+  #mobile-menu {
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
     background: rgba(0, 0, 0, .5);
   }
   .menu {
-    bottom:0px;
-    -webkit-box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.75);
-    box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.75);;
-    height:368px;
+    top: 0px;
+    -webkit-box-shadow: 5px 3px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 3px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 3px 20px -3px rgba(0, 0, 0, 0.75);;
+    height: 420px;
     margin: auto auto;
-    padding:2% 10% 5% 10%;
-    width:80%;
-    background:#fff;
-    z-index:1040;
+    padding: 2% 10% 5% 10%;
+    width: 80%;
+    background: #fff;
+    z-index: 1040;
   }
 
   .divider {
@@ -204,20 +214,22 @@ body {
     height: 60px;
     background: rgba(255, 255, 255, 1);
   }
-  .navbar-fixed-alt{
-    top:0;
-    bottom:auto;
+  .navbar-fixed-alt {
+    top: 0;
+    bottom: auto;
     z-index: 1030;
   }
   header {
-    margin-top: 50px;
+    //margin-top: 50px;
+    height: 200px;
+    background-size: 100%;
     background-position: center center;
   }
   main .content-container {
     //TODO MODDIFY THIS
-    min-height: 565px;
+    min-height: 595px;
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
   }
   main .panel {
     width: 50%;
@@ -227,7 +239,7 @@ body {
   footer .sm-logos {
     font-size: 2em;
   }
-  footer  .col-copyright {
+  footer .col-copyright {
     text-align: right;
     margin: 23px 0 0;
     padding: 0 10px 0 0;
@@ -308,6 +320,13 @@ body {
 }
 
 // CRAP
+.top-margin {
+  margin-top: 2%;
+}
+
+.bottom-margin {
+  margin-bottom: 2%;
+}
 
 .text-light {
   color: #eee;
@@ -316,22 +335,110 @@ body {
 .circle {
   border-radius: 50%;
   margin: 2px;
-  width:45px;
-  height:45px;
-  padding:7px 3px 7px 3px;
+  width: 45px;
+  height: 45px;
+  padding: 7px 3px 7px 3px;
 }
 
 /*============ NavIcon ==============*/
-#arrow {
-  width:30px;
-  height:30px;
-  margin-top:10px;
+
+.pad-top {
+  padding-top: 20%
 }
+
+.v-center {
+  //margin-top: 21%;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.box-position {
+  padding: 0 0;
+  margin: 10px auto;
+  min-height: 300px;
+}
+
+.center-col {
+  padding: 0;
+}
+
+.search-container {
+  padding: .5% 0% 2% 0%;
+  //background: rgba(250,250,250, 0.8);
+}
+
+.content-box {
+  color: #3c3c3c;
+  background: #fafafa;
+  border: solid 1px #c7c7c7;
+  -webkit-box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+}
+
+.content-half {
+  //border: solid 1px #c7c7c7;
+  color: #3c3c3c;
+  background: #fafafa;
+}
+
+.center-row {
+
+}
+
+.center-row .content-half:nth-of-type(1) {
+  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
+  border-left: 1px solid #c7c7c7;
+  -webkit-box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.center-row .content-half:nth-of-type(3) {
+  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+  -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.box-edge {
+  background: #fafafa;
+  //border: solid 1p= #c7c7c7;
+}
+
+.center-col div:nth-of-type(1) {
+  border-right: 1px solid #c7c7c7;
+  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
+  -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.center-col div:nth-of-type(3) {
+  border-left: 1px solid #c7c7c7;
+  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
+  -webkit-box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+#arrow {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+
 #arrow span {
   display: block;
   position: absolute;
   height: 5px;
-  width:  30%;
+  width: 30%;
   background: #eee;
   border-radius: 9px;
   opacity: 1;
@@ -340,8 +447,9 @@ body {
   -o-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
 }
+
 #arrow span:nth-child(1) {
-  left:18px;
+  left: 16px;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -349,12 +457,13 @@ body {
 }
 
 #arrow span:nth-child(2) {
-  right:18px;
+  right: 16px;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 #arrow.open span:nth-child(1) {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);

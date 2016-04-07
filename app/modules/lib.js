@@ -21,12 +21,17 @@ function rnd(){
     }
     return x;
 }
+function contains(string, term){
+    console.log(string);
+if (string.indexOf(term) != -1) return true;
+else return false;
+}
 exports.emboldenTerm = emboldenTerm;
 exports.shortenString = shortenString;
 exports.isInt = isInt;
 exports.removeTags =  removeTags;
 exports.escapeSquare =  escapeSquare;
 exports.rnd = rnd;
-
+exports.contains = contains;
 exports.Array =  Array;
 exports.String = String;
