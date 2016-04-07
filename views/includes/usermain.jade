@@ -26,14 +26,15 @@ main
                                 input.btn.btn-default.text-right(type="submit" value="Submit")
             else
                 .content-container.content-box
-                    pre Title:          #{title}
-                    pre Name:           #{firstName} #{lastName}
-                    pre DoB:            #{doB}
-                    br
-                    pre Username:       #{username}
-                    pre Email Address   #{emailAddress}
-                    br
-                    pre Privileges:     #{role}
-                    pre Created:        #{created}
+                    .col-s-6.col-sm-offset-2
+                        pre Title:          #{title}
+                        pre Name:           #{firstName} #{lastName}
+                        pre DoB:            #{doB}
+                        br
+                        pre Username:       #{username}
+                        pre Email Address   #{emailAddress}
+                        br
+                        pre Privileges:     #{role}
+                        pre Created:        #{created}
 
 

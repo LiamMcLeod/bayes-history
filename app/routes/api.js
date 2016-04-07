@@ -69,12 +69,12 @@ module.exports = function (express) {
                     if (valid) {
                         var obj = {};
                         //TODO JSON Web Token;
+                        // for (var key in userData) {
+                        //     obj[key] = userData[key];
+                        // }
                         for (var key in userData) {
-                            obj[key] = userData[key];
-                        }
-                        for (var key in obj) {
-                            if (obj[key].trim) {
-                                obj[key] = obj[key].trim();
+                            if (userData[key].trim) {
+                                userData[key] = userData[key].trim();
                             }
                         }
                         console.log(valid);
