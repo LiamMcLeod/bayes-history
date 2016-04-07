@@ -41,7 +41,7 @@ User.prototype.findUser = function (o, callback) {
     var results = [];
     var query = {};
 
-    if (o.user.contains('.ac.uk') || o.user.contains('.co.uk')) {
+    if (o.user.contains('.ac.uk') || o.user.contains('.co.uk') || o.user.contains('.com') && o.user.contains('@')) {
         query = {
             text: 'SELECT * from "User" WHERE "EmailAddress"=$1',
             values: [o.user.toLowerCase()]
