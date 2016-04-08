@@ -13,7 +13,6 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
 
-var errorHandler = require('errorhandler');
 var morgan = require('morgan');
 
 var subdomain = require('express-subdomain');
@@ -33,9 +32,6 @@ if (!process.env.NODE_ENV) {
     var env = require('dotenv').config();
 }
 
-if (process.env.NODE_ENV === "development") {
-    app.use(errorHandler());
-}
 //  ===================== Config =====================                           // Import Configs for easy editing.
 // Application Root for absolute paths
 global.appRoot = path.resolve(__dirname);

@@ -46,7 +46,7 @@ module.exports = function (express) {
         var user = new User();
         var o = {};
         delete req.session.status;
-        //TODO FINISH THIS  
+        //TODO FINISH THIS
         if (!req.body.username || typeof req.body.username === 'undefined' || req.body.username === null || req.body.username === '') {
             req.session.loggedIn = false;
             req.session.status = 'Username empty.';
@@ -82,11 +82,10 @@ module.exports = function (express) {
                                 userData[key] = userData[key].trim();
                             }
                         }
+                        
                         userData.Created = userData.Created.toString();
-                        // userData.Created = userData.Created.substring(0, 10);
                         userData.DateOfBirth = userData.DateOfBirth.toString();
-                        // userData.DateOfBirth = userData.DateOfBirth.substring(0, 10);
-                        // console.log(valid);
+
                         req.session.loggedIn = true;
                         req.session.user = userData;
                         req.session.status = 'Success';

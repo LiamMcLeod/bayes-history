@@ -26,7 +26,6 @@ module.exports = function (express) {
         res.render('test', {
             session: req.session
         });
-
     });
     appRouter.get('/sess', function (req, res) {
         var $ = req.session;
@@ -102,7 +101,6 @@ module.exports = function (express) {
                 else res.send(result)
             });
         }
-
     });
 
     return appRouter;
