@@ -5,7 +5,7 @@ main
             if !loggedIn
                 form(action="/api/login" method="POST" )
                     .panel.panel-default
-                        .panel-heading.text-center Log In
+                        .panel-heading.text-center.textmuted Log In
                         .panel-body.text-center
                             .row
                                 .col-sm-6
@@ -16,17 +16,14 @@ main
                                     label Password:
                                     br
                                     input#password(type="password" name="password" title="")
-                        .panel-footer
                             if !status
-                                .col-xs-6.text-left
-                                    #{status}
-                                .col-xs-6.text-right
-                                    input.btn.btn-default.text-right(type="submit" value="Submit")
-                            else
-                                input.btn.btn-default.text-right(type="submit" value="Submit")
+                                span.text-danger #{status}
+                        .panel-footer
+                            input.btn.btn-default.text-right(type="submit" value="Submit")
+
             else
                 .content-container.content-box
-                    .col-s-8.col-sm-offset-2
+                    .col-s-2.col-sm-offset-2
                         pre Title:          #{title}
                         pre Name:           #{firstName} #{lastName}
                         pre DoB:            #{doB}
@@ -36,5 +33,5 @@ main
                         br
                         pre Privileges:     #{role}
                         pre Created:        #{created}
-
+                        //todo tooltip for wrong password / user
 
