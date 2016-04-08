@@ -11,16 +11,15 @@ main
                                 .col-sm-6
                                     label Username:
                                     br
-                                    input#email(type="username" name="username" title="" autofocus)
+                                    input#email(type="username" name="username" title="" autofocus required)
                                 .col-sm-6
                                     label Password:
                                     br
-                                    input#password(type="password" name="password" title="")
+                                    input#password(type="password" name="password" title="" required)
                             if status!='Success'
                                 span.text-danger #{status}
                         .panel-footer.text-right
                             input.btn.btn-default(type="submit" value="Submit")
-
             else
                 .content-container.content-box
                     .col-s-2.col-sm-offset-2

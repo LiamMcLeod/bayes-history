@@ -46,6 +46,7 @@ module.exports = function (express) {
         var user = new User();
         var o = {};
         delete req.session.status;
+        //TODO FINISH THIS
         if (!req.body.username || typeof req.body.username === 'undefined' || req.body.username === null || req.body.username === '') {
             req.session.loggedIn = false;
             req.session.status = 'Username empty.';
