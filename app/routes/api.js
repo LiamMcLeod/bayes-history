@@ -77,8 +77,8 @@ module.exports = function (express) {
                                 userData[key] = userData[key].trim();
                             }
                         }
-                        userData.Created = userData.Created.substring(0, 10);
-                        userData.DateOfBirth = userData.DateOfBirth.substring(0, 10);
+                        // userData.Created = userData.Created.substring(0, 10);
+                        // userData.DateOfBirth = userData.DateOfBirth.substring(0, 10);
                         // console.log(valid);
                         req.session.loggedIn = true;
                         req.session.user = userData;
