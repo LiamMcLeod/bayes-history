@@ -50,6 +50,8 @@ module.exports = function (express) {
             req.session.status = 'Username empty.';
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Username empty"})
+        } else {
+            o.user = req.body.username;
         }
         if (!req.body.password) {
             req.session.loggedIn = false;
@@ -57,8 +59,9 @@ module.exports = function (express) {
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Password empty"})
         }
-        o.user = req.body.username;
-        o.pass = req.body.password;
+        else {
+            o.pass = req.body.password;
+        }
         // o.exists = user.findUser(o);
         user.findUser(o, function (err, found, userData) {
             if (err) throw err;
@@ -77,9 +80,9 @@ module.exports = function (express) {
                                 userData[key] = userData[key].trim();
                             }
                         }
-                        userData.Created=userData.Created.toString();
+                        userData.Created = userData.Created.toString();
                         // userData.Created = userData.Created.substring(0, 10);
-                        userData.DateOfBirth=userData.DateOfBirth.toString();
+                        userData.DateOfBirth = userData.DateOfBirth.toString();
                         // userData.DateOfBirth = userData.DateOfBirth.substring(0, 10);
                         // console.log(valid);
                         req.session.loggedIn = true;
