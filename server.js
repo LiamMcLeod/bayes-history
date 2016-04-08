@@ -33,8 +33,8 @@ if (!process.env.NODE_ENV) {
     var env = require('dotenv').config();
 }
 
-if (process.env.NODE_ENV==="development"){
-  app.use(errorHandler());
+if (process.env.NODE_ENV === "development") {
+    app.use(errorHandler());
 }
 //  ===================== Config =====================                           // Import Configs for easy editing.
 // Application Root for absolute paths
@@ -65,7 +65,7 @@ app.use(session({
         resave: true,
         saveUninitialized: true,
         store: new pgStore(config.db.url),
-        cookie: {/*secure:true, */maxAge:1800000}
+        cookie: {/*secure:true, */maxAge: 1800000}
     })
 );
 // if (process.env.NODE_ENV === 'production') {

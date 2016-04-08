@@ -58,7 +58,7 @@ module.exports = function (express) {
 
     // File called
     appRouter.get('/:file', function (req, res) {
-        // if (req.session.loggedIn === undefined) {
+        // if (typeof req.session.loggedIn === undefined) {
         //     req.session.loggedIn=false;
         // }
         var file = req.params.file;
