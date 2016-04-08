@@ -36,7 +36,7 @@ module.exports = function (express) {
     apiRouter.get('/logout', function (req, res) {
         req.session.destroy();
         // delete req.session;
-        res.redirect('/', 400, function (err) {
+        res.redirect('/', 303, function (err) {
             if (err) mod.error(req, res, err);
         })
     });
@@ -44,19 +44,21 @@ module.exports = function (express) {
     apiRouter.post('/login', function (req, res) {
         var user = new User();
         var o = {};
+        delete req.session.status;
+        req.session.status = '';
         o.user = req.body.username;
         o.pass = req.body.password;
 
         if (!o.user) {
             req.session.loggedIn = false;
             req.session.status = 'Username empty.';
-            res.redirect(400, '/user');
+            res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Username empty"})
         }
         if (!o.pass) {
             req.session.loggedIn = false;
             req.session.status = 'Password empty.';
-            res.redirect(400, '/user');
+            res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Password empty"})
         }
         // o.exists = user.findUser(o);
@@ -84,12 +86,12 @@ module.exports = function (express) {
                         // console.log(valid);
                         req.session.loggedIn = true;
                         req.session.user = userData;
-                        req.session.status = 'Success!';
+                        req.session.status = 'Success';
                         res.redirect(302, '/user');
                     } else {
                         req.session.loggedIn = false;
                         req.session.status = 'Incorrect password.';
-                        res.redirect(400, '/user');
+                        res.redirect(303, '/user');
                         // mod.returnJSON(res, {success: false, message: "Password incorrect"})
                     }
                 })
@@ -97,7 +99,7 @@ module.exports = function (express) {
             else {
                 req.session.loggedIn = false;
                 req.session.status = 'Incorrect username.';
-                res.redirect(400, '/user');
+                res.redirect(303, '/user');
                 // mod.returnJSON(res, {success: false, message: "Username does not exist"})
             }
         });
