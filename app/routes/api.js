@@ -46,7 +46,7 @@ module.exports = function (express) {
         var user = new User();
         var o = {};
         delete req.session.status;
-        if (!req.body.username || typeof req.body.username === 'undefined' || req.body.username !=null || req.body.username != '' ) {
+        if (!req.body.username || typeof req.body.username === 'undefined' || req.body.username === null || req.body.username === '') {
             req.session.loggedIn = false;
             req.session.status = 'Username empty.';
             res.redirect(303, '/user');
@@ -54,7 +54,7 @@ module.exports = function (express) {
         } else {
             o.user = req.body.username;
         }
-        if (!req.body.password || typeof req.body.password === 'undefined' || req.body.password !=null || req.body.password != '' ) {
+        if (!req.body.password || typeof req.body.password === 'undefined' || req.body.password === null || req.body.password === '') {
             req.session.loggedIn = false;
             req.session.status = 'Password empty.';
             res.redirect(303, '/user');
