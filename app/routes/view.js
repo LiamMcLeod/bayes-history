@@ -64,7 +64,11 @@ module.exports = function (express) {
         var file = req.params.file;
 
         var $ = req.session;
-        
+
+        // userData.Created = userData.Created.toString();
+        $.user.Created = $.user.Created.substring(4, 15);
+        // userData.DateOfBirth = userData.DateOfBirth.toString();
+        $.user.DateOfBirth = $.user.DateOfBirth.substring(4, 15);
         // console.log($.loggedIn);
 
         if ($.loggedIn) {

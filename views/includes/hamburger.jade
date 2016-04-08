@@ -17,11 +17,18 @@
             li
                 a(href='/contact') Contact
             li.divider
-            li
-                a(href='/') Sign Up &nbsp;
-            li.divider
-            li
-                a(href='/user') Log In &nbsp;
+            if !loggedIn
+                li
+                    a(href='/') Sign Up &nbsp;
+                li.divider
+                li
+                    a(href='/user') Log In &nbsp;
+            else
+                li
+                    a(href='/user') #{username}
+                li.divider
+                li
+                    a(href='/api/logout') Log Out
 
 .menu-circle.left.mobile-only
     a.navbar-brand()
