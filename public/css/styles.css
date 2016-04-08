@@ -92,7 +92,7 @@ body {
 
   main .content-container {
     min-height: 370px;
-    margin: 0 auto;
+    margin: 25px auto;
     width: 100%; }
 
   main .panel {
@@ -182,7 +182,6 @@ body {
 
   main .content-container {
     min-height: 595px;
-    margin: 0 auto;
     width: 95%; }
 
   main .panel {
