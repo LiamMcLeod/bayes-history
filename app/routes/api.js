@@ -45,22 +45,20 @@ module.exports = function (express) {
         var user = new User();
         var o = {};
         delete req.session.status;
-        req.session.status = '';
-        o.user = req.body.username;
-        o.pass = req.body.password;
-
-        if (!o.user) {
+        if (!req.body.username) {
             req.session.loggedIn = false;
             req.session.status = 'Username empty.';
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Username empty"})
         }
-        if (!o.pass) {
+        if (!req.body.password) {
             req.session.loggedIn = false;
             req.session.status = 'Password empty.';
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Password empty"})
         }
+        o.user = req.body.username;
+        o.pass = req.body.password;
         // o.exists = user.findUser(o);
         user.findUser(o, function (err, found, userData) {
             if (err) throw err;
