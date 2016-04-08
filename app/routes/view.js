@@ -65,9 +65,18 @@ module.exports = function (express) {
         var $ = req.session;
 
         // userData.Created = userData.Created.toString();
-        $.user.Created = $.user.Created.substring(4, 15);
+        if ($.user) {
+            if ($.user.Created.contains('T')) {
+                $.user.Created = $.user.Created.substring(4, 15);
+                console.log($.user.Created);
+            }
+            if ($.user.DateOfBirth.contains('T')) {
+                $.user.DateOfBirth = $.user.DateOfBirth.substring(4, 15);
+                 console.log($.user.DateOfBirth);
+            }
+        }
         // userData.DateOfBirth = userData.DateOfBirth.toString();
-        $.user.DateOfBirth = $.user.DateOfBirth.substring(4, 15);
+
         // console.log($.loggedIn);
 
         if ($.loggedIn) {
