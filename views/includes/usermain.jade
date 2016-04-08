@@ -17,15 +17,15 @@ main
                                     br
                                     input#password(type="password" name="password" title="")
                         .panel-footer
-                            .col-xs-6.text-left
-                                if !status
+                            if !status
+                                .col-xs-6.text-left
                                     #{status}
-                                else
-                                    span ...
-                            .col-xs-6.text-right
+                                .col-xs-6.text-right
+                                    input.btn.btn-default.text-right(type="submit" value="Submit")
+                            else
                                 input.btn.btn-default.text-right(type="submit" value="Submit")
             else
-                .content-container.content-box
+                .content-container.content-box.margin-bottom
                     .col-s-3.col-sm-offset-3
                         pre Title:          #{title}
                         pre Name:           #{firstName} #{lastName}
