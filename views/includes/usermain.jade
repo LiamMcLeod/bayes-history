@@ -37,7 +37,7 @@ main
                                 br
                                 label Created:
                         .col-xs-1.user-info
-                            input(value="#{title}" disabled)
+                            input#title(value="#{title}" disabled)
                             input(value="#{firstName} #{lastName}" disabled)
                             input(value="#{doB}" disabled)
                             input(value="#{username}" disabled)
@@ -46,7 +46,7 @@ main
                             input(value="#{created}" disabled)
                             //todo tooltip for wrong password / user
                         .col-xs-1.pen-icon
-                            a.fa.fa-edit
+                            a(onclick="toggleDisable('#title')").fa.fa-edit
                             br
                             a.fa.fa-edit
                             br
