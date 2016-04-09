@@ -122,8 +122,9 @@ body {
   main .content-container {
     //TODO MODDIFY THIS
     min-height: 370px;
-    margin: 25px auto;
+    margin: 10px auto;
     width: 100%;
+    padding: 10px 0;
   }
   main .panel {
     width: 100%;
@@ -132,6 +133,27 @@ body {
   main form .row {
     margin: auto;
     width: 80%;
+  }
+  main .user-info input {
+    background: rgba(255, 255, 255, 0);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #3A435E;
+    margin-bottom: 2px;
+  }
+  main .user-info label {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 2px;
+  }
+  main .pen-icon a {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-left: 10px;
+    margin-bottom: 9px;
   }
   #mobile-menu {
     left: 0;
@@ -154,8 +176,9 @@ body {
     z-index: 1040;
   }
   .menu-circle .navbar-brand {
-    height: 30px;
-    padding: 10px 10px;
+    height: 35px;
+    width: 38px;
+    padding: 12px 10px;
   }
 
   .divider {
@@ -430,7 +453,7 @@ body {
 }
 
 #arrow {
-  width: 15px;
+  width: 18px;
   height: 30px;
   margin-top: 5px;
 }
@@ -438,7 +461,7 @@ body {
 #arrow span {
   display: block;
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 30%;
   background: #eee;
   border-radius: 9px;
@@ -480,7 +503,7 @@ body {
 }
 
 #icon {
-  width: 15px;
+  width: 18px;
   height: 10px;
   position: relative;
   margin: auto;
@@ -498,7 +521,7 @@ body {
 #icon span {
   display: block;
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 100%;
   background: #eee;
   border-radius: 9px;
@@ -519,11 +542,11 @@ body {
 }
 
 #icon span:nth-child(2), #icon span:nth-child(3) {
-  top: 5px;
+  top: 6px;
 }
 
 #icon span:nth-child(4) {
-  top: 10px;
+  top: 12px;
 }
 
 #icon.open span:nth-child(1) {

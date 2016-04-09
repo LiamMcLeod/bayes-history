@@ -68,11 +68,11 @@ module.exports = function (express) {
         if ($.user) {
             if ($.user.Created.contains('T')) {
                 $.user.Created = $.user.Created.substring(4, 15);
-                console.log($.user.Created);
+                // console.log($.user.Created);
             }
             if ($.user.DateOfBirth.contains('T')) {
                 $.user.DateOfBirth = $.user.DateOfBirth.substring(4, 15);
-                 console.log($.user.DateOfBirth);
+                 // console.log($.user.DateOfBirth);
             }
         }
         // userData.DateOfBirth = userData.DateOfBirth.toString();

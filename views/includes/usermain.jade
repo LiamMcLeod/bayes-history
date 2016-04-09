@@ -20,16 +20,43 @@ main
                         .panel-footer.text-right
                             input.btn.btn-default(type="submit" value="Submit")
             else
-                .content-container.content-box
-                    .col-sm-6.col-sm-offset-3
-                        pre Title:          #{title}
-                        pre Name:           #{firstName} #{lastName}
-                        pre DoB:            #{doB}
-                        br
-                        pre Username:       #{username}
-                        pre Email Address   #{emailAddress}
-                        br
-                        pre Privileges:     #{role}
-                        pre Created:        #{created}
-                        //todo tooltip for wrong password / user
-
+                .content-container
+                    .row
+                        .col-xs-1
+                                label Title:&nbsp;
+                                br
+                                label Name:
+                                br
+                                label DoB:
+                                br
+                                label Username:
+                                br
+                                label Email Address
+                                br
+                                label Privileges:
+                                br
+                                label Created:
+                        .col-xs-1.user-info
+                            input(value="#{title}" disabled)
+                            input(value="#{firstName} #{lastName}" disabled)
+                            input(value="#{doB}" disabled)
+                            input(value="#{username}" disabled)
+                            input(value="#{emailAddress}" disabled)
+                            input(value="#{role}" disabled)
+                            input(value="#{created}" disabled)
+                            //todo tooltip for wrong password / user
+                        .col-xs-1.pen-icon
+                            a.fa.fa-edit
+                            br
+                            a.fa.fa-edit
+                            br
+                            a.fa.fa-edit
+                            br
+                            a.fa.fa-edit
+                            br
+                            a.fa.fa-edit
+                            br
+                            a.fa.fa-lock
+                            br
+                            a.fa.fa-lock
+                            br
