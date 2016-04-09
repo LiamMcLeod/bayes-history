@@ -7,8 +7,6 @@ $(document).ready(function () {
         $(id).toggleClass('hide');
     }
 
-    var x = 0;
-
     //TODO FIX
     // function toggleDisable(id) {
     //     if ($(id).attr("disabled")) {
@@ -16,7 +14,6 @@ $(document).ready(function () {
     //     } else {
     //         $(id).attr("disabled")
     //     }
-    //     x++;
     // }
 
     if (screen.width <= 375) {

@@ -4,6 +4,8 @@ var User = require('../models/User');
 
 // var User = require('../models/User').User;
 
+//TODO POST ROUTE FOR USER DATA CHANGE
+
 module.exports = function (express) {
 
     var apiRouter = express.Router();
@@ -82,7 +84,7 @@ module.exports = function (express) {
                                 userData[key] = userData[key].trim();
                             }
                         }
-                        
+
                         userData.Created = userData.Created.toString();
                         userData.DateOfBirth = userData.DateOfBirth.toString();
 
