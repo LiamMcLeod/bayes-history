@@ -4,13 +4,11 @@ function toggleDisable(role) {
     var $ad = $('.ad-toggle');
 
     switch (role) {
-        case 'user':
-        /* falls through */
-        default:
-            if ($norm.attr("disabled")) {
-                $norm.removeAttr("disabled")
+        case 'admin':
+            if ($ad.attr("disabled")) {
+                $ad.removeAttr("disabled")
             } else {
-                $norm.attr("disabled")
+                $ad.attr("disabled")
             }
             break;
         /* falls through */
@@ -21,11 +19,13 @@ function toggleDisable(role) {
                 $mod.attr("disabled")
             }
         /* falls through */
-        case 'admin':
-            if ($ad.attr("disabled")) {
-                $ad.removeAttr("disabled")
+        case 'user':
+        /* falls through */
+        default:
+            if ($norm.attr("disabled")) {
+                $norm.removeAttr("disabled")
             } else {
-                $ad.attr("disabled")
+                $norm.attr("disabled")
             }
             break;
     }
