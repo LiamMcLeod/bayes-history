@@ -1,5 +1,7 @@
 var mod = require('../modules/routeModules');
 var User = require('../models/User');
+var flash = require('connect-flash');
+//todo replace status with connect flash
 // var jwt = require('jsonwebtoken');
 
 // var User = require('../models/User').User;
