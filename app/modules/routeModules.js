@@ -109,7 +109,7 @@ function renderLoggedOut(req, res, file) {
     });
 }
 function renderProfile(req, res) {
-    $ = req.session;
+    var $ = req.session;
     res.render('profile', {
         bg: lib.rnd(),
         session: $,
