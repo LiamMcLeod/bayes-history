@@ -28,7 +28,7 @@ main
                             a(href="u/#{username}") profile
                 .row
                     form(action="/api/edituser" method="POST" )
-                        .col-xs-1
+                        .col-xs-3
                             label Title:&nbsp;
                             br
                             label First Name:
@@ -44,7 +44,7 @@ main
                             label Privileges:
                             br
                             label Created:
-                        .col-xs-10.user-info
+                        .col-xs-9.user-info
                             input.norm-toggle(value="#{title}" disabled)
                             input.norm-toggle(value="#{firstName}" disabled)
                             input.norm-toggle(value="#{lastName}" disabled)
