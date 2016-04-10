@@ -10,7 +10,6 @@ function toggleDisable(role) {
             } else {
                 $ad.attr("disabled")
             }
-            break;
         /* falls through */
         case 'moderator':
             if ($mod.attr("disabled")) {
