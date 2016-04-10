@@ -1,10 +1,10 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
     function toggleDisable(role) {
         var $norm = $('.norm-toggle');
         var $mod = $('.mod-toggle');
         var $ad = $('.ad-toggle');
-        
+
         switch (role) {
             case 'user':
             /* falls through */
@@ -70,4 +70,4 @@ $(document).ready(function () {
 
         });
     }
-});
+// });
