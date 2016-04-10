@@ -34,37 +34,9 @@ main{
     var $ad = $('.ad-toggle');
 
     //Intentional fall-through
-
-switch (role) {
-    case 'user':
-        /* falls through */
-    default:
-        if ($norm.attr("disabled")) {
-            $norm.removeAttr("disabled")
-        } else {
-            $norm.attr("disabled")
-        }
-        break;
-        /* falls through */
-    case 'moderator':
-        if ($mod.attr("disabled")) {
-            $mod.removeAttr("disabled")
-        } else {
-            $mod.attr("disabled")
-        }
-        /* falls through */
-    case 'admin':
-        if ($ad.attr("disabled")) {
-            $ad.removeAttr("disabled")
-        } else {
-            $ad.attr("disabled")
-        }
-        break;
-}
-     }
-//TODO Change ICON TO TICK
+</script><!--        switch (role) {--><!--            case 'user':--><!--                /* falls through */--><!--            default:--><!--                if ($norm.attr("disabled")) {--><!--                    $norm.removeAttr("disabled")--><!--                } else {--><!--                    $norm.attr("disabled")--><!--                }--><!--                break;--><!--                /* falls through */--><!--            case 'moderator':--><!--                if ($mod.attr("disabled")) {--><!--                    $mod.removeAttr("disabled")--><!--                } else {--><!--                    $mod.attr("disabled")--><!--                }--><!--                /* falls through */--><!--            case 'admin':--><!--                if ($ad.attr("disabled")) {--><!--                    $ad.removeAttr("disabled")--><!--                } else {--><!--                    $ad.attr("disabled")--><!--                }--><!--                break;--><!--        }--><!--    }//TODO Change ICON TO TICK
 // BG COLOR TO WHITE
-// INVOKE SUBMIT ON TICK CLICK</script><script>(function (i, s, o, g, r, a, m) {
+// INVOKE SUBMIT ON TICK CLICK--><script>(function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
