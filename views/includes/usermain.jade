@@ -31,32 +31,37 @@ main
                         .col-xs-3
                             .row
                                 label Title:&nbsp;
-                                br
                             .row
                                 label First Name:
-                                br
-                            label Last Name:
-                            br
-                            label DoB:
-                            br
-                            label Username:
-                            br
-                            label Email Address
-                            br
-                            label Privileges:
-                            br
-                            label Created:
+                            .row
+                                label Last Name:
+                            .row
+                                label DoB:
+                            .row
+                                label Username:
+                            .row
+                                label Email Address
+                            .row
+                                label Privileges:
+                            .row
+                                label Created:
                         .col-xs-9.user-info
                             .row
                                 input.norm-toggle(value="#{title}" disabled)
                             .row
                                 input.norm-toggle(value="#{firstName}" disabled)
-                            input.norm-toggle(value="#{lastName}" disabled)
-                            input.norm-toggle(value="#{doB}" disabled)
-                            input.norm-toggle(value="#{username}" disabled)
-                            input.mod-toggle(value="#{emailAddress}" disabled)
-                            input.ad-toggle(value="#{role}" disabled)
-                            input(value="#{created}" disabled)
+                            .row
+                                input.norm-toggle(value="#{lastName}" disabled)
+                            .row
+                                input.norm-toggle(value="#{doB}" disabled)
+                            .row
+                                input.norm-toggle(value="#{username}" disabled)
+                            .row
+                                input.mod-toggle(value="#{emailAddress}" disabled)
+                            .row
+                                input.ad-toggle(value="#{role}" disabled)
+                            .row
+                                input(value="#{created}" disabled)
                 .row.text-center
                     .col-sm-2.pen-icon
                         // TODO Finish
