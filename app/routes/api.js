@@ -96,7 +96,7 @@ module.exports = function (express, client) {
 
                         req.session.loggedIn = true;
                         req.session.user = userData;
-                        req.flash('status', 'Success');
+                        req.flash('status', 'Success!');
                         res.redirect(302, '/user');
                     } else {
                         req.session.loggedIn = false;

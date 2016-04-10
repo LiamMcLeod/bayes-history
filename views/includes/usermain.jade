@@ -15,13 +15,13 @@ main
                                     label Password:
                                     br
                                     input#password(type="password" name="password" title="" required)
-                            if status != 'Success'
+                            if status != 'Success!'
                                 span.text-danger #{status}
                         .panel-footer.text-right
                             input.btn.btn-default(type="submit" value="Submit")
             else
                 .row.text-center
-                    h1 #{status}
+                    h1.text-success #{status}
                 .row.text-left
                     .col-sm-12
                         span To your&nbsp;
