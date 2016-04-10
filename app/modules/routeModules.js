@@ -74,8 +74,46 @@ function returnJSON(res, results, param) {
     else return res.json(results);
 }
 
+function pageLoggedIn(req, res, file) {
+    var $ = req.session;
+
+    res.render(file, {
+        bg: lib.rnd(),
+        session: $,
+        status: $.status,
+        loggedIn: $.loggedIn,
+        userId: $.user.UserId,
+        username: $.user.Username,
+        title: $.user.Title,
+        firstName: $.user.FirstName,
+        lastName: $.user.LastName,
+        emailAddress: $.user.EmailAddress,
+        doB: $.user.DateOfBirth,
+        created: $.user.Created,
+        role: $.user.Role
+    }, function (err, result) {
+        if (err) error(req, res, err);
+        else res.send(result)
+    });
+}
+
+function pageLoggedOut(req, res, file) {
+    var $ = req.session;
+
+    res.render(file, {
+        bg: lib.rnd(),
+        status: $.status,
+        loggedIn: $.loggedIn
+    }, function (err, result) {
+        if (err) error(req, res, err);
+        else res.send(result)
+    });
+}
+
 exports.getResults = getResults;
 exports.checkParams = checkParams;
 exports.checkPretty = checkPretty;
 exports.returnJSON = returnJSON;
 exports.error = error;
+exports.pageLoggedOut = pageLoggedOut;
+exports.pageLoggedIn = pageLoggedIn

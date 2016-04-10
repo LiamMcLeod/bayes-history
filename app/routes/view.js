@@ -55,16 +55,69 @@ module.exports = function (express) {
 
     });
 
-    // File called
+    appRouter.get('/u/:id', function (req, res) {
+        //TODO md5 email for ID or use username
+        var o = {};
+        o.user = req.params.id;
+        var $ = req.session;
+
+        if (o && $.loggedIn) {
+            var user = new User();
+            user.findUser(o, function (err, user) {
+                var profileData = {};
+                $.profile = user;
+                res.render('profile', {
+                    bg: lib.rnd(),
+                    session: $,
+                    status: $.status,
+                    loggedIn: $.loggedIn,
+                    userId: $.user.UserId,
+                    username: $.user.Username,
+                    title: $.user.Title,
+                    firstName: $.user.FirstName,
+                    lastName: $.user.LastName,
+                    emailAddress: $.user.EmailAddress,
+                    doB: $.user.DateOfBirth,
+                    created: $.user.Created,
+                    role: $.user.Role,
+                    pUsername: $.profile.User,
+                    pTitle: $.profile.Title,
+                    pFirstName: $.profile.FirstName,
+                    pLastName: $.profile.LastName,
+                    pEmailAddress: $.profile.EmailAddress,
+                    pDoB: $.profile.DateOfBirth,
+                    pCreated: $.profile.Created,
+                    pRole: $.profile.Role
+                }, function (err, result) {
+                    if (err) mod.error(req, res, err);
+                    else res.send(result)
+                });
+            });
+        }
+        else if (!o && $.loggedIn) {
+            var file = "profile";
+            mod.pageLoggedIn(req, res, file);
+        }
+        else {
+            res.render('profile', {
+                bg: lib.rnd(),
+                status: $.status,
+                loggedIn: $.loggedIn
+            }, function (err, result) {
+                if (err) mod.error(req, res, err);
+                else res.send(result)
+            });
+        }
+    });
+
+// File called
     appRouter.get('/:file', function (req, res) {
         // if (typeof req.session.loggedIn === undefined) {
         //     req.session.loggedIn=false;
         // }
         var file = req.params.file;
-
         var $ = req.session;
 
-        // userData.Created = userData.Created.toString();
         if ($.user) {
             if ($.user.Created.contains('T')) {
                 $.user.Created = $.user.Created.substring(4, 15);
@@ -72,12 +125,9 @@ module.exports = function (express) {
             }
             if ($.user.DateOfBirth.contains('T')) {
                 $.user.DateOfBirth = $.user.DateOfBirth.substring(4, 15);
-                 // console.log($.user.DateOfBirth);
+                // console.log($.user.DateOfBirth);
             }
         }
-        // userData.DateOfBirth = userData.DateOfBirth.toString();
-
-        // console.log($.loggedIn);
 
         if ($.loggedIn) {
             res.render(file, {
@@ -113,4 +163,5 @@ module.exports = function (express) {
     });
 
     return appRouter;
-};
+}
+;

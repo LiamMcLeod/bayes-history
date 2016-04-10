@@ -58,7 +58,7 @@ User.prototype.findUser = function (o, callback) {
         if (err) {
             console.log(err);
         }
-        /* CLient runs query */
+        /* Client runs query */
         var q = client.query(query, function (err, result) {
             /* Client Q has error */
             if (err) throw err;
@@ -124,6 +124,42 @@ function get(prop, val) {
     User[prop] = val;
 }
 
+User.prototype.getUser = function(o){
+
+    query = {
+            text: 'SELECT * from "User" WHERE "Username"=$1 LIMIT 1',
+            values: [o.user]
+        };
+
+     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+         /* if Connection Callback Error */
+         if (err) {
+             console.log(err);
+         }
+         /* CLient runs query */
+         var q = client.query(query, function (err, result) {
+             /* Client Q has error */
+             if (err) throw err;
+             else return result;
+         });
+         /* Client Q has row */
+         q.on('row', function (row, result) {
+             results.push(row);
+             result.addRow(row);
+         });
+         /* Client Q has finished */
+         q.on('end', function (result) {
+             done();
+             var found = false;
+             if (result.rows[0] != undefined) {
+                 setResults(result);
+                 found = true;
+             }
+             else found = false;
+             callback(error, found, result.rows[0]);
+         });
+     });
+};
 
 module.exports = User;
 

@@ -1,0 +1,37 @@
+main
+    .container-fluid
+        .content-container
+            if !loggedIn
+                //form(action="/api/login" method="POST" )
+                //    .panel.panel-default
+                //        .panel-heading.text-center.textmuted Log In
+                //        .panel-body.text-center
+                //            .row
+                //                .col-sm-6
+                //                    label Username:
+                //                    br
+                //                    input#email(type="username" name="username" title="" autofocus required)
+                //                .col-sm-6
+                //                    label Password:
+                //                    br
+                //                    input#password(type="password" name="password" title="" required)
+                //            if status != 'Success'
+                //                span.text-danger #{status}
+                //        .panel-footer.text-right
+                //            input.btn.btn-default(type="submit" value="Submit")
+                h1 Not logged in.
+            else
+                .content-container
+                    .row
+                        .col-sm-4
+                            //http://stackoverflow.com/questions/20629850/express-with-gravatar
+                            //TODO Gravatar
+                        .col-sm-1
+                            span #{pTitle}
+                            span #{pFirstName}
+                            span #{pLastName}
+                            span #{pDoB}
+                            span #{pUsername}
+                            span #{pEmailAddress}
+                            span #{pRole}
+                            span Member Since #{pCreated}

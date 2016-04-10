@@ -6,11 +6,11 @@
     "start": "node server"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "classlist": "^1.0.1",
     "connect": "^3.4.1",
+    "connect-flash": "^0.1.1",
     "connect-pg-simple": "^3.1.0",
     "cookie-parser": "^1.4.1",
     "debug": "~2.2.0",
@@ -19,8 +19,8 @@
     "express-session": "^1.13.0",
     "express-subdomain": "^1.0.5",
     "jade": "~1.11.0",
-    "jsonwebtoken": "^5.7.0",
     "left-pad": "github:azer/left-pad",
+    "md5": "^2.1.0",
     "method-override": "^2.3.5",
     "morgan": "~1.6.1",
     "node-sass-middleware": "0.8.0",
