@@ -21,6 +21,10 @@ module.exports = function (express) {
         mod.returnJSON(res, results, param);
     });
 
+    apiRouter.get('/cookie', function (req, res) {
+        res.cookie('connect.sid', {MaxAge: 604800000}).send('Cookie is set');
+    });
+
     apiRouter.get('/user', function (req, res) {
         var results;
         // TODO QUERY STUFF
@@ -37,6 +41,7 @@ module.exports = function (express) {
 
     apiRouter.get('/logout', function (req, res) {
         req.session.destroy();
+        // res.clearCookie('connect.sid');
         // delete req.session;
         res.redirect('/', 303, function (err) {
             if (err) mod.error(req, res, err);
