@@ -71,7 +71,7 @@ module.exports = function (express) {
         }
         else if (!o && $.loggedIn) {
             req.session.profile = req.session.user;
-            mod.renderProfile(req, r7es);
+            mod.renderProfile(req, res);
         }
         else {
             res.render('profile', {
