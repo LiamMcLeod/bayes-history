@@ -135,7 +135,9 @@ body {
     width: 80%;
   }
   main .user-info {
-    min-width: 275px;
+    min-width: 240px;
+    margin: 0 auto;
+    text-align: right;
   }
   main .user-info input {
     background: rgba(255, 255, 255, 0);
