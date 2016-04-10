@@ -104,6 +104,9 @@ body {
     margin: auto;
     width: 80%; }
 
+  main .user-info {
+    min-width: 445; }
+
   main .user-info input {
     background: rgba(255, 255, 255, 0);
     border-top: 0;
