@@ -387,14 +387,14 @@ body {
   transition: .25s ease-in-out; }
 
 #arrow span:nth-child(1) {
-  left: 9px;
+  left: 10px;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg); }
 
 #arrow span:nth-child(2) {
-  right: 9px;
+  right: 10px;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
