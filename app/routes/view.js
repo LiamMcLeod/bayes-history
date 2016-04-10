@@ -64,39 +64,14 @@ module.exports = function (express) {
         if (o && $.loggedIn) {
             var user = new User();
             user.findUser(o, function (err, user) {
-                var profileData = {};
-                $.profile = user;
-                res.render('profile', {
-                    bg: lib.rnd(),
-                    session: $,
-                    status: $.status,
-                    loggedIn: $.loggedIn,
-                    userId: $.user.UserId,
-                    username: $.user.Username,
-                    title: $.user.Title,
-                    firstName: $.user.FirstName,
-                    lastName: $.user.LastName,
-                    emailAddress: $.user.EmailAddress,
-                    doB: $.user.DateOfBirth,
-                    created: $.user.Created,
-                    role: $.user.Role,
-                    pUsername: $.profile.User,
-                    pTitle: $.profile.Title,
-                    pFirstName: $.profile.FirstName,
-                    pLastName: $.profile.LastName,
-                    pEmailAddress: $.profile.EmailAddress,
-                    pDoB: $.profile.DateOfBirth,
-                    pCreated: $.profile.Created,
-                    pRole: $.profile.Role
-                }, function (err, result) {
-                    if (err) mod.error(req, res, err);
-                    else res.send(result)
-                });
+                delete req.session.profile.password;
+                req.session.profile = user;
+                mod.renderProfile(req, res);
             });
         }
         else if (!o && $.loggedIn) {
-            var file = "profile";
-            mod.pageLoggedIn(req, res, file);
+            req.session.profile = req.session.user;
+            mod.renderProfile(req, r7es);
         }
         else {
             res.render('profile', {
@@ -130,6 +105,7 @@ module.exports = function (express) {
         }
 
         if ($.loggedIn) {
+            // TODO Module
             res.render(file, {
                 bg: lib.rnd(),
                 session: $,

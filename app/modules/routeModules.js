@@ -74,9 +74,8 @@ function returnJSON(res, results, param) {
     else return res.json(results);
 }
 
-function pageLoggedIn(req, res, file) {
+function renderLoggedIn(req, res, file) {
     var $ = req.session;
-
     res.render(file, {
         bg: lib.rnd(),
         session: $,
@@ -97,7 +96,7 @@ function pageLoggedIn(req, res, file) {
     });
 }
 
-function pageLoggedOut(req, res, file) {
+function renderLoggedOut(req, res, file) {
     var $ = req.session;
 
     res.render(file, {
@@ -109,11 +108,41 @@ function pageLoggedOut(req, res, file) {
         else res.send(result)
     });
 }
+function renderProfile(req, res) {
+    $ = req.session;
+    res.render('profile', {
+        bg: lib.rnd(),
+        session: $,
+        status: $.status,
+        loggedIn: $.loggedIn,
+        userId: $.user.UserId,
+        username: $.user.Username,
+        title: $.user.Title,
+        firstName: $.user.FirstName,
+        lastName: $.user.LastName,
+        emailAddress: $.user.EmailAddress,
+        doB: $.user.DateOfBirth,
+        created: $.user.Created,
+        role: $.user.Role,
+        pUsername: $.profile.User,
+        pTitle: $.profile.Title,
+        pFirstName: $.profile.FirstName,
+        pLastName: $.profile.LastName,
+        pEmailAddress: $.profile.EmailAddress,
+        pDoB: $.profile.DateOfBirth,
+        pCreated: $.profile.Created,
+        pRole: $.profile.Role
+    }, function (err, result) {
+        if (err) error(req, res, err);
+        else res.send(result)
+    });
+}
 
 exports.getResults = getResults;
 exports.checkParams = checkParams;
 exports.checkPretty = checkPretty;
 exports.returnJSON = returnJSON;
 exports.error = error;
-exports.pageLoggedOut = pageLoggedOut;
-exports.pageLoggedIn = pageLoggedIn
+exports.renderLoggedOut = renderLoggedOut;
+exports.renderLoggedIn = renderLoggedIn;
+exports.renderProfile = renderProfile;
