@@ -64,7 +64,7 @@ module.exports = function (express) {
         o.user = req.params.id;
         var $ = req.session;
 
-        if (o && $.loggedIn) {
+        if (o.user && $.loggedIn) {
             var user = new User();
             user.findUser(o, function (err, user) {
                 delete user.password;
@@ -72,7 +72,7 @@ module.exports = function (express) {
                 mod.renderProfile(req, res);
             });
         }
-        else if (!o && $.loggedIn) {
+        else if (!o.user && $.loggedIn) {
             req.session.profile = req.session.user;
             mod.renderProfile(req, res);
         }
