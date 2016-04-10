@@ -79,7 +79,7 @@ function renderLoggedIn(req, res, file) {
     res.render(file, {
         bg: lib.rnd(),
         session: $,
-        status: $.status,
+        status:  req.flash('status'),
         loggedIn: $.loggedIn,
         userId: $.user.UserId,
         username: $.user.Username,
@@ -101,7 +101,7 @@ function renderLoggedOut(req, res, file) {
 
     res.render(file, {
         bg: lib.rnd(),
-        status: $.status,
+        status: req.flash('status'),
         loggedIn: $.loggedIn
     }, function (err, result) {
         if (err) error(req, res, err);
@@ -113,7 +113,7 @@ function renderProfile(req, res) {
     res.render('profile', {
         bg: lib.rnd(),
         session: $,
-        status: $.status,
+        status:  req.flash('status'),
         loggedIn: $.loggedIn,
         userId: $.user.UserId,
         username: $.user.Username,

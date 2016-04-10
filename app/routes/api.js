@@ -1,6 +1,5 @@
 var mod = require('../modules/routeModules');
 var User = require('../models/User');
-var flash = require('connect-flash');
 //todo replace status with connect flash
 // var jwt = require('jsonwebtoken');
 
@@ -8,7 +7,7 @@ var flash = require('connect-flash');
 
 //TODO POST ROUTE FOR USER DATA CHANGE
 
-module.exports = function (express) {
+module.exports = function (express, client) {
 
     var apiRouter = express.Router();
 
@@ -54,11 +53,11 @@ module.exports = function (express) {
         //http://1000hz.github.io/bootstrap-validator/
         var user = new User();
         var o = {};
-        delete req.session.status;
+        // delete req.session.status;
         //TODO FINISH THIS
         if (!req.body.username || typeof req.body.username === 'undefined' || req.body.username === null || req.body.username === '') {
             req.session.loggedIn = false;
-            req.session.status = 'Username empty.';
+            req.flash('status', 'Username empty.');
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Username empty"})
         } else {
@@ -66,7 +65,7 @@ module.exports = function (express) {
         }
         if (!req.body.password || typeof req.body.password === 'undefined' || req.body.password === null || req.body.password === '') {
             req.session.loggedIn = false;
-            req.session.status = 'Password empty.';
+            req.flash('status', 'Password empty.');
             res.redirect(303, '/user');
             // mod.returnJSON(res, {success: false, message: "Password empty"})
         }
@@ -97,11 +96,11 @@ module.exports = function (express) {
 
                         req.session.loggedIn = true;
                         req.session.user = userData;
-                        req.session.status = 'Success';
+                        req.flash('status', 'Success');
                         res.redirect(302, '/user');
                     } else {
                         req.session.loggedIn = false;
-                        req.session.status = 'Incorrect password.';
+                        req.flash('status', 'Incorrect password.');
                         res.redirect(303, '/user');
                         // mod.returnJSON(res, {success: false, message: "Password incorrect"})
                     }
@@ -109,7 +108,7 @@ module.exports = function (express) {
             }
             else {
                 req.session.loggedIn = false;
-                req.session.status = 'Incorrect username.';
+                req.flash('status', 'Incorrect username.');
                 res.redirect(303, '/user');
                 // mod.returnJSON(res, {success: false, message: "Username does not exist"})
             }

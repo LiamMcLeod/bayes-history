@@ -25,6 +25,8 @@ var session = require('express-session');
 var pgStore = require('connect-pg-simple')(session);
 var uuid = require('node-uuid');
 
+var flash = require('connect-flash');
+
 // var passport = require('passport');
 // var passportLocal = require('passport-local').Strategy;
 
@@ -64,6 +66,7 @@ app.use(session({
         cookie: {/*secure:true, */maxAge: 1800000}
     })
 );
+app.use(flash());
 // if (process.env.NODE_ENV === 'production') {
 //   app.set('trust proxy', 1);
 //   session.cookie.secure = true;// serve secure cookies
@@ -74,18 +77,18 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(favicon(config.dir.favicon + '/favicon.ico'));
 
 // ======================  Logging, Debugging & Errors ======================
-// app.use(morgan('dev'));                                             // Log HTTP Requests
+app.use(morgan('dev'));                                             // Log HTTP Requests
 
 // ======================  Dirs  ======================
 app.set('view engine', 'jade');
 app.use('/public', express.static(config.dir.public));
 
 // ====================== Routes ======================
-
 //Back-End
 var apiRouter = require('./app/routes/api')(express, client);
 app.use('/api', apiRouter);
 // app.use(subdomain('api', apiRouter));
+
 //Front-End
 var appRouter = require('./app/routes/view')(express, client);
 app.use('/', appRouter);
@@ -103,4 +106,4 @@ app.listen(config.port.default).on('error', function (err) {
     }
 });
 console.log("App running in " + process.env.NODE_ENV + " mode");
-exports = module.exports = app; 			                        // Public Exposure
+exports = module.exports = app;
