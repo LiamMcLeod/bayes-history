@@ -2,19 +2,55 @@ script(src='/public/libs/jquery-2.2.1.min.js')
 script(src='/public/libs/bootstrap.min.js')
 script(src='/public/js/plugins.js')
 script.
-       function toggleDisable(id) {
-            if ($(id).attr("disabled")) {
-                $(id).removeAttr("disabled")
-            } else {
-                $(id).attr("disabled")
-            }
+    function toggleDisable(role) {
+        var $norm = $('.norm-toggle');
+        var $mod = $('.mod-toggle')
+        var $ad = $('.ad-toggle');
+
+        //Intentional fall-through
+        switch (role) {
+            case 'user':
+                if ($norm.attr("disabled")) {
+                    $norm.removeAttr("disabled")
+                } else {
+                    $norm.attr("disabled")
+                }
+            break;
+            default:
+                if ($norm.attr("disabled")) {
+                    $norm.removeAttr("disabled")
+                } else {
+                    $norm.attr("disabled")
+                }
+            case 'moderator':
+                if ($mod.attr("disabled")) {
+                    $mod.removeAttr("disabled")
+                } else {
+                    $mod.attr("disabled")
+                }
+            case 'admin':
+                if ($ad.attr("disabled")) {
+                    $ad.removeAttr("disabled")
+                } else {
+                    $ad.attr("disabled")
+                }
+                break;
         }
-        //TODO Change ICON TO TICK
-        // BG COLOR TO WHITE
-        // INVOKE SUBMIT ON TICK CLICK
+    }
+    //TODO Change ICON TO TICK
+    // BG COLOR TO WHITE
+    // INVOKE SUBMIT ON TICK CLICK
 script.
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject'] = r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-75651559-1', 'auto');
     ga('send', 'pageview');

@@ -45,31 +45,16 @@ main
                             br
                             label Created:
                         .col-sm-1.user-info
-                            input#userTitle(value="#{title}" disabled)
-                            input(value="#{firstName}" disabled)
-                            input(value="#{lastName}" disabled)
-                            input(value="#{doB}" disabled)
-                            input(value="#{username}" disabled)
-                            input(value="#{emailAddress}" disabled)
-                            input(value="#{role}" disabled)
+                            input.norm-toggle(value="#{title}" disabled)
+                            input.norm-toggle(value="#{firstName}" disabled)
+                            input.norm-toggle(value="#{lastName}" disabled)
+                            input.norm-toggle(value="#{doB}" disabled)
+                            input.norm-toggle(value="#{username}" disabled)
+                            input.mod-toggle(value="#{emailAddress}" disabled)
+                            input.ad-toggle(value="#{role}" disabled)
                             input(value="#{created}" disabled)
                             //todo tooltip for wrong password / user
-                        .col-sm-1.pen-icon
-                            a(onclick="toggleDisable('#userTitle')").fa.fa-edit
-                            br
-                            a.fa.fa-edit
-                            br
-                            a.fa.fa-edit
-                            br
-                            a.fa.fa-edit
-                            br
-                            a.fa.fa-edit
-                            br
-                            a.fa.fa-edit
-                            br
-                            a.fa.fa-lock
-                            br
-                            a.fa.fa-lock
-                            br
-                            a.fa.fa-lock
-                            br
+                    .row
+                        .col-sm-2.pen-icon
+                            a(onclick="toggleDisable(#{role})").fa.fa-2x.fa-edit
+                            a().fa.fa-2x.fa-check
