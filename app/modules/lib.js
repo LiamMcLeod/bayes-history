@@ -26,6 +26,11 @@ function contains(string, term){
 if (string.indexOf(term) != -1) return true;
 else return false;
 }
+
+function isset(x){
+    return ((typeof x) != 'undefined');
+}
+
 exports.emboldenTerm = emboldenTerm;
 exports.shortenString = shortenString;
 exports.isInt = isInt;
@@ -33,5 +38,6 @@ exports.removeTags =  removeTags;
 exports.escapeSquare =  escapeSquare;
 exports.rnd = rnd;
 exports.contains = contains;
+exports.isset = isset;
 exports.Array =  Array;
 exports.String = String;

@@ -122,6 +122,10 @@ body {
     margin-bottom: 8px;
     margin-top: 2px; }
 
+  .enabled {
+    background: white;
+    border-bottom: 1px solid #3A435E; }
+
   main .user-info label {
     border-top: 0;
     border-left: 0;
@@ -134,6 +138,9 @@ body {
     border-right: 0;
     margin-left: 10px;
     margin-bottom: 9px; }
+
+  main .pen-icon a:hover {
+    text-decoration: none; }
 
   #mobile-menu {
     left: 0;
