@@ -29,7 +29,8 @@ main
                     .row
                 else
                     #login-status.row.jumbotron.text-success.alert-success.border-success.text-center
-                        h2.text-success(onclick="toggleHide('#loginStatus')") #{status}
+                        h2
+                          a.text-success(onclick="toggleHide('#loginStatus')") #{status}
                 .row.text-left
                     .col-sm-12
                         span To your&nbsp;
