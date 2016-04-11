@@ -266,8 +266,17 @@ body {
   main .user-info {
     min-width: 445px;
   }
-  main .user-label{
+  main .user-label {
     max-width: 144px;
+  }
+
+  main .user-info input {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  main .user-info .row {
+    margin: 0;
   }
 
   footer .center-block a {
