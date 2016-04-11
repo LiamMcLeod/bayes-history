@@ -35,7 +35,7 @@ main
                         span To your&nbsp;
                             a(href="u/#{username}") profile
                 .row
-                    form(action="/api/edit/user" method="POST" )
+                    form#edit-user(action="/api/edit/user" method="POST" )
                         .col-xs-3.user-label
                             .row
                                 label Title:&nbsp;
@@ -72,4 +72,4 @@ main
                                 input(value="#{created}" disabled)
                 .row.text-center
                     .col-sm-2.pen-icon
-                        a(onclick="toggleDisable('#{role}')")#edit-user.fa.fa-2x.fa-check.fa-edit
+                        a(onclick="toggleDisable('#{role}')").fa.fa-2x.fa-check.fa-edit

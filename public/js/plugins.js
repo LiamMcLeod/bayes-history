@@ -5,54 +5,50 @@ function toggleDisable(role) {
 
     //todo toggle colour
     //todo fix that check input
-    switch (role) {
-        case 'admin':
-            if ($ad.attr("disabled")) {
-                $ad.prop("disabled", false);
-                  $ad.toggleClass('enabled');
-            } else {
-                if (checkInput($ad)) {
+
+    if (checkInput()) {
+        switch (role) {
+            case 'admin':
+                if ($ad.attr("disabled")) {
+                    $ad.prop("disabled", false);
+                    $ad.toggleClass('enabled');
+                } else {
                     $ad.prop("disabled", true);
                     $ad.toggleClass('enabled');
-                  }
-            }
-        /* falls through */
-        case 'moderator':
-            if ($mod.attr("disabled")) {
-                $mod.prop("disabled", false);
-                  $mod.toggleClass('enabled');
-            } else {
-                if (checkInput($mod)) {
+                }
+            /* falls through */
+            case 'moderator':
+                if ($mod.attr("disabled")) {
+                    $mod.prop("disabled", false);
+                    $mod.toggleClass('enabled');
+                } else {
                     $mod.prop("disabled", true);
                     $mod.toggleClass('enabled');
-                  }
-            }
-        /* falls through */
-        case 'user':
-        default:
-            if ($norm.attr("disabled")) {
-                $norm.prop("disabled", false);
-                $norm.toggleClass('enabled');
-            } else {
-                if (checkInput($norm)) {
-                    $norm.prop("disabled", true)
+                }
+            /* falls through */
+            case 'user':
+            default:
+                if ($norm.attr("disabled")) {
+                    $norm.prop("disabled", false);
                     $norm.toggleClass('enabled');
-                  }
-            }
-            break;
-          }
-    $('#edit-user').toggleClass('fa-edit');
+                } else {
+                    $norm.prop("disabled", true);
+                    $norm.toggleClass('enabled');
+                }
+                break;
+        }
+        $('.pen-icon a').toggleClass('fa-edit');
+    }
 }
 
-function checkInput(input) {
-    var valid = false;
-    input.each(function () {
-        if (valid) {
-            return valid;
-        }
-        valid = !$.trim($(this).val());
+function checkInput() {
+    var valid=false;
+    $("#edit-user input").each(function () {
+        valid = ($(this).val.length != 0);
+        if (!valid)
+            return valid
     });
-    return valid;
+
 }
 
 function toggleHide(id) {

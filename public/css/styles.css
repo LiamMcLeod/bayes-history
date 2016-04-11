@@ -122,7 +122,7 @@ body {
     margin-bottom: 8px;
     margin-top: 2px; }
 
-  .enabled {
+  .row > .enabled {
     background: white;
     border-bottom: 1px solid #3A435E; }
 
