@@ -7,26 +7,38 @@ function toggleDisable(role) {
             if ($ad.attr("disabled")) {
                 $ad.prop("disabled", false)
             } else {
-                $ad.prop("disabled", true)
+                if (checkInput($ad))
+                    $ad.prop("disabled", true)
             }
         /* falls through */
         case 'moderator':
             if ($mod.attr("disabled")) {
                 $mod.prop("disabled", false)
             } else {
-                $mod.prop("disabled", true)
+                if (checkInput($mod))
+                    $mod.prop("disabled", true)
             }
         /* falls through */
         case 'user':
-        /* falls through */
         default:
             if ($norm.attr("disabled")) {
                 $norm.prop("disabled", false)
             } else {
-                $norm.prop("disabled", true)
+                if (checkInput($norm))
+                    $norm.prop("disabled", true)
             }
             break;
     }
-
     $('#edit-user').toggleClass('fa-edit');
+}
+
+function checkInput(input) {
+    var valid = false;
+    input.each(function () {
+        if (valid) {
+            return valid;
+        }
+        valid = !$.trim($(this).val());
+    });
+    return valid;
 }
