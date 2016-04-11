@@ -25,11 +25,11 @@ main
                                 .col-xs-6.text-right
                                     input.btn.btn-default(type="submit" value="Submit")
             else
-                if status
-                    .row.jumbotron.text-success.alert-success
-                        h2.text-success #{status}
-                else
+                if status!='Success!'
                     .row
+                else
+                    .row.jumbotron.text-success.alert-success(class=x)
+                        h2.text-success #{status}
                 .row.text-left
                     .col-sm-12
                         span To your&nbsp;
