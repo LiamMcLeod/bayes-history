@@ -126,6 +126,10 @@ body {
     width: 100%;
     padding: 10px 0;
   }
+  main #login-status .jumbotron{
+    padding-top: 0;
+    padding-bottom: 10px;
+  }
   main .panel {
     width: 100%;
     margin: 8% auto -10% auto;
@@ -387,7 +391,7 @@ body {
 }
 
 .border-success{
-  border: 1px solid #3c763d;
+  border: 1px solid #4F9051;
 }
 
 /*============ NavIcon ==============*/
