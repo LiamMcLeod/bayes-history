@@ -28,4 +28,6 @@ function toggleDisable(role) {
             }
             break;
     }
+
+    $('#edit-user').toggleClass('fa-edit');
 }
