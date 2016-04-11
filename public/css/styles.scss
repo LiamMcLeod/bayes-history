@@ -152,7 +152,7 @@ body {
     margin-bottom: 8px;
     margin-top: 2px;
   }
-  main input .enabled{
+  input .enabled{
     background: rgba(255, 255, 255, 1);
     border-bottom: 1px solid #3A435E;
   }
@@ -168,6 +168,9 @@ body {
     border-right: 0;
     margin-left: 10px;
     margin-bottom: 9px;
+  }
+  main .pen-icon a:hover {
+    text-decoration: none;
   }
   #mobile-menu {
     left: 0;
