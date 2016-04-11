@@ -46,7 +46,8 @@ function checkInput() {
     $("#edit-user input").each(function () {
         valid = ($(this).val.length != 0);
         if (!valid)
-            return valid
+            return valid;
+        return valid;
     });
 
 }
