@@ -26,8 +26,10 @@ main
                                     input.btn.btn-default(type="submit" value="Submit")
             else
                 if status
-                    .row.text-center.alert-success
+                    .row.jumbotron.text-success.alert-success
                         h2.text-success #{status}
+                else
+                    .row
                 .row.text-left
                     .col-sm-12
                         span To your&nbsp;
