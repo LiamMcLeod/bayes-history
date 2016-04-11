@@ -2,6 +2,9 @@ function toggleDisable(role) {
     var $norm = $('.norm-toggle');
     var $mod = $('.mod-toggle');
     var $ad = $('.ad-toggle');
+
+    //todo toggle colour
+    //todo fix that check input
     switch (role) {
         case 'admin':
             if ($ad.attr("disabled")) {
@@ -41,4 +44,8 @@ function checkInput(input) {
         valid = !$.trim($(this).val());
     });
     return valid;
+}
+
+function toggleHide(id) {
+    $(id).toggleClass('hide');
 }

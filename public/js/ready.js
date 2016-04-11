@@ -3,11 +3,7 @@ $(document).ready(function () {
     function toggleMenu() {
         $('#floating-menu').toggleClass('hide');
     }
-
-    function toggleHide(id) {
-        $(id).toggleClass('hide');
-    }
-
+    
     if (screen.width <= 375) {
         $('#icon').click(function () {
             $(this).toggleClass('open');
