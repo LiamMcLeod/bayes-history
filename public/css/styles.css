@@ -96,7 +96,7 @@ body {
     width: 100%;
     padding: 10px 0; }
 
-  main #login-status .jumbotron {
+  main #login-status {
     padding-top: 0;
     padding-bottom: 10px; }
 
