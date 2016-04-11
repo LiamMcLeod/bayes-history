@@ -25,8 +25,9 @@ main
                                 .col-xs-6.text-right
                                     input.btn.btn-default(type="submit" value="Submit")
             else
-                .row.text-center.alert-success
-                    h2.text-success #{status}
+                if status
+                    .row.text-center.alert-success
+                        h2.text-success #{status}
                 .row.text-left
                     .col-sm-12
                         span To your&nbsp;
