@@ -2,29 +2,28 @@ function toggleDisable(role) {
     var $norm = $('.norm-toggle');
     var $mod = $('.mod-toggle');
     var $ad = $('.ad-toggle');
-
     switch (role) {
         case 'admin':
             if ($ad.attr("disabled")) {
-                $ad.removeAttr("disabled")
+                $ad.prop("disabled", false)
             } else {
-                $ad.attr("disabled")
+                $ad.prop("disabled", true)
             }
         /* falls through */
         case 'moderator':
             if ($mod.attr("disabled")) {
-                $mod.removeAttr("disabled")
+                $mod.prop("disabled", false)
             } else {
-                $mod.attr("disabled")
+                $mod.prop("disabled", true)
             }
         /* falls through */
         case 'user':
         /* falls through */
         default:
             if ($norm.attr("disabled")) {
-                $norm.removeAttr("disabled")
+                $norm.prop("disabled", false)
             } else {
-                $norm.attr("disabled")
+                $norm.prop("disabled", true)
             }
             break;
     }
