@@ -107,7 +107,7 @@ body {
   main .user-info {
     min-width: 240px;
     margin: 0 auto;
-    text-align: right; }
+    text-align: left; }
 
   main .user-info input {
     background: rgba(255, 255, 255, 0);
