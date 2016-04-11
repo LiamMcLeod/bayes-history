@@ -8,27 +8,36 @@ function toggleDisable(role) {
     switch (role) {
         case 'admin':
             if ($ad.attr("disabled")) {
-                $ad.prop("disabled", false)
+                $ad.prop("disabled", false);
+                  $ad.toggleClass('enabled');
             } else {
-                if (checkInput($ad))
-                    $ad.prop("disabled", true)
+                if (checkInput($ad)) {
+                    $ad.prop("disabled", true);
+                    $ad.toggleClass('enabled');
+                  }
             }
         /* falls through */
         case 'moderator':
             if ($mod.attr("disabled")) {
-                $mod.prop("disabled", false)
+                $mod.prop("disabled", false);
+                  $mod.toggleClass('enabled');
             } else {
-                if (checkInput($mod))
-                    $mod.prop("disabled", true)
+                if (checkInput($mod)) {
+                    $mod.prop("disabled", true);
+                    $mod.toggleClass('enabled');
+                  }
             }
         /* falls through */
         case 'user':
         default:
             if ($norm.attr("disabled")) {
-                $norm.prop("disabled", false)
+                $norm.prop("disabled", false);
+                $norm.toggleClass('enabled');
             } else {
-                if (checkInput($norm))
+                if (checkInput($norm)) {
                     $norm.prop("disabled", true)
+                    $norm.toggleClass('enabled');
+                  }
             }
             break;
     }

@@ -152,6 +152,10 @@ body {
     margin-bottom: 8px;
     margin-top: 2px;
   }
+  main .user-info input .enabled {
+    background: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid #3A435E;
+  }
   main .user-info label {
     border-top: 0;
     border-left: 0;
