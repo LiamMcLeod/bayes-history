@@ -317,6 +317,9 @@ body {
   height: 45px;
   padding: 7px 3px 7px 3px; }
 
+.border-success {
+  border: 1px solid #3c763d; }
+
 /*============ NavIcon ==============*/
 .pad-top {
   padding-top: 20%; }
