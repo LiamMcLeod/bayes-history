@@ -30,7 +30,6 @@ module.exports = function (apiRouter) {
 
     app.get('/api/user', function (req, res) {
         var results;
-        // TODO QUERY STUFF
         if (results.isEmpty()) {
             return res.status(404).json({message: "Error: Not Found."});
         }

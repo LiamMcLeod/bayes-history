@@ -45,9 +45,6 @@ config.db = {};
       config.db.url   =   config.db.dbms+config.db.user+':'+config.db.pass+'@'+config.db.host+':'+config.db.port+'/'+config.db.base+'?'+config.db.query;
     }
 
-    // Warning Case Sensitive
-
-
     config.port = {};
     // Default ports
     config.port.default   = process.env.PORT || 8080 || 80;

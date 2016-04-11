@@ -17,8 +17,13 @@ main
                                     input#password(type="password" name="password" title="" required)
                             if status != 'Success!'
                                 span.text-danger #{status}
-                        .panel-footer.text-right
-                            input.btn.btn-default(type="submit" value="Submit")
+                        .panel-footer
+                            .row
+                                .col-xs-6.text-left
+                                    input(type="checkbox" name="remember")
+                                    span &nbspRemember?
+                                .col-xs-6.text-right
+                                    input.btn.btn-default(type="submit" value="Submit")
             else
                 .row.text-center
                     span.text-success #{status}
@@ -64,5 +69,4 @@ main
                                 input(value="#{created}" disabled)
                 .row.text-center
                     .col-sm-2.pen-icon
-                        // TODO Finish
                         a(onclick="toggleDisable('#{role}')")#edit-user.fa.fa-2x.fa-check.fa-edit

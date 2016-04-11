@@ -56,10 +56,6 @@ module.exports = function (express) {
     });
 
     appRouter.get('/u/:id', function (req, res) {
-        //TODO md5 email for ID or use username
-
-        /* TODO Change ICON TO TICK BG COLOR TO WHITE INVOKE SUBMIT ON TICK CLICK */
-
         var o = {};
         o.user = req.params.id;
         var $ = req.session;
@@ -108,7 +104,6 @@ module.exports = function (express) {
         }
 
         if ($.loggedIn) {
-            // TODO Module
             // res.render(file, {
             //     bg: lib.rnd(),
             //     session: $,
