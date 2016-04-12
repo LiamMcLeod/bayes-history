@@ -38,6 +38,7 @@ module.exports = function (express) {
             session: req.session
         });
     });
+    
     /*
      * GET
      * '/sess'
