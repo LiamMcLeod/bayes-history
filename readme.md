@@ -6,10 +6,17 @@ Bayes Test application in NodeJS for representation of academic confidence
 
 [Live Here](http://bayes.herokuapp.com/)
 
+I've removed all the modules for pushes my end
+
+npm install
+
+will address that
+
 Development
 ========================================
 TODOS
 
+    Compress / Replace images.. Too slow loading
     Actual confidence rating part
     Move profiles over to REST API
     Sign Up
