@@ -1,0 +1,41 @@
+#%RAML 0.8
+title: BayesHistory
+version: 0.0.1
+baseUri: localhost:8080/api
+protocols: [HTTP, HTTPS]
+
+/:
+    description: test
+    /{term}:
+        displayName: test
+        get:
+          queryParameters:
+              prettyify:
+                default: false
+                required: false
+                displayName: pretty
+                description: prettifies JSON output.
+                type: boolean
+          responses:
+            200:
+              body:
+                application/json:
+                  example: |
+                    {
+                      "QuestionId": 7,
+                      "QuestionNumber": 7,
+                      "QuestionText": "Describe a method that can, without the use of binary addition, multiply any unsigned\r\nbinary integer by the binary number 10 (the denary number 2).",
+                      "ExamPaperUnit": "COMP1",
+                      "ExamPaperSeason": "Summer",
+                      "ExamPaperDate": "2014-06-02T00:00:00.000Z",
+                      "ExamBoardName": "AQA",
+                      "LevelTitle": "AS",
+                      "SubjectTitle": "Computing"
+                    }
+        uriParameters:
+            term:
+                default: ''
+                required: true
+                type: string
+                displayName: Search Term
+                description: The search term used in the SQL query to get questions like {term}
