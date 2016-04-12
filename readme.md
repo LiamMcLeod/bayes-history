@@ -1,27 +1,40 @@
 Bayes Test
 ===================
-Don't get excited nothing to see here, really.
+Don't get excited nothing to see here, really. Feel free to remove at any point.
 
 Bayes Test application in NodeJS for representation of academic confidence
+
+Very slow, I know.
 
 [Live Here](http://bayes.herokuapp.com/)
 
 I've removed all the modules for pushes my end
 
-npm install
+    npm install
 
 will address that
+
+    username: root
+    password: toor
+
+should get you in.
+After which there's not much else you can do.
+
+Just a rough. Template for working in.
 
 Development
 ========================================
 TODOS
 
-    Compress / Replace images.. Too slow loading
     Actual confidence rating part
+    Finish responsiveness
+    ^ when I'm satisfied that scope creep won't mess with that.
+    Style media queries properly (only static width devices supported)
+    Compress / Replace images.. Too slow loading
     Move profiles over to REST API
     Sign Up
     Finish Edit User Data
-    Validation for the above
+    Server-side validation for the above
     A LOT OF OTHER STUFF
 
 
