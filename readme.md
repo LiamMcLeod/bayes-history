@@ -1,6 +1,8 @@
 Bayes Test
 ===================
-Don't get excited nothing to see here, really. Feel free to remove at any point.
+Don't get excited nothing to see here, really.
+
+Feel free to remove at any point or move it to a less important branch.
 
 Bayes Test application in NodeJS for representation of academic confidence
 
@@ -38,7 +40,7 @@ TODOS
     A LOT OF OTHER STUFF
 
 
-Extent of implementation is limited to sessions, log in and out, profiles. Though most of this is very limited.
+Extent of this so far is limited to sessions, log in and out, profiles. Though most of this is very limited.
 
 It's documented as best as I could at this early hour.
 
@@ -50,9 +52,13 @@ Documentation
 ========================================
 API Routes
 ----------
-|Route	                |   HTTP Verb	    |        Description               |
+|Route	                |   HTTP Verb	    |        Description               | State
 ------------------------|------------------ |----------------------------------|
-|/api/		            |   GET	            |        API Root			       |
+|/api/		            |   GET	            |        API Root			       |DONE
+|/api/login             |   POST            | Posts username+password for auth |DONE
+|/api/logout            |   GET             |  Destroys current session data   |DONE
+|/api/user/:username    |   GET             | Serve user data for profiles     | TODO
+|/api/edit/user         |   POST            | Posts new user credentials to DB |Partial
 
 
 Database
