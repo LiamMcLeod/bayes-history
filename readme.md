@@ -1,6 +1,8 @@
 Bayes Test
 ===================
-Don't get excited nothing to see here, really. Feel free to remove at any point.
+Don't get excited nothing to see here, really.
+
+Feel free to remove at any point or move it to a less important branch.
 
 Bayes Test application in NodeJS for representation of academic confidence
 
