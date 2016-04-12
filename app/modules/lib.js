@@ -1,5 +1,6 @@
     String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
     Array.prototype.isEmpty = function(){if(this.length===0) {return true;}else{return false;}};
+    Boolean.prototype.toggle = function (x) {return !x;};
 
 function emboldenTerm(input, term) {return input.replace(new RegExp('(^|\)(' + term + ')(\|$)','ig'), '$1<strong>$2</strong>$3');}
 
@@ -41,3 +42,4 @@ exports.contains = contains;
 exports.isset = isset;
 exports.Array =  Array;
 exports.String = String;
+exports.Boolean = Boolean;

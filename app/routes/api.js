@@ -104,7 +104,8 @@ module.exports = function (express, client) {
 
     apiRouter.post('/edit/user' ,function(req, res){
         //TODO Finish this route
-
+        var o = req.body();
+        req.send(o)
     });
 
 //Catch All

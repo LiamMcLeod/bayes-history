@@ -1,11 +1,8 @@
+var $norm = $('.norm-toggle');
+var $mod = $('.mod-toggle');
+var $ad = $('.ad-toggle');
+
 function toggleDisable(role) {
-    var $norm = $('.norm-toggle');
-    var $mod = $('.mod-toggle');
-    var $ad = $('.ad-toggle');
-
-    //todo toggle colour
-    //todo fix that check input
-
     if (checkInput()) {
         switch (role) {
             case 'admin':
@@ -34,22 +31,28 @@ function toggleDisable(role) {
                 } else {
                     $norm.prop("disabled", true);
                     $norm.toggleClass('enabled');
+                    $('#edit-user').submit();
                 }
                 break;
         }
+        // $('#edit-user').submit();
         $('.pen-icon a').toggleClass('fa-edit');
     }
 }
 
 function checkInput() {
-    var valid=false;
-    $("#edit-user input").each(function () {
-        valid = ($(this).val.length != 0);
-        if (!valid)
-            return valid;
+    var valid = true;
+    if($.trim($norm.val()).length === 0 || $.trim($mod.val()).length === 0 || $.trim($ad.val()).length === 0){
+        valid=false;
         return valid;
-    });
-
+    } else if ($norm.val().length === 0 || $mod.val().length === 0  || $ad.val().length === 0){
+        valid = false;
+        return valid;
+    }
+    if (!valid) {
+        return valid;
+    }
+    return valid;
 }
 
 function toggleHide(id) {
