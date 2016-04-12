@@ -1,6 +1,6 @@
 Bayes Test
 ===================
-Don't get excited nothing to see here really.
+Don't get excited nothing to see here, really.
 
 Bayes Test application in NodeJS for representation of academic confidence
 
