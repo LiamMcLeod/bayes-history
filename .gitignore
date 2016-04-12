@@ -1,4 +1,4 @@
 #ignore dirs
 .idea/*
 .env
-links.txt
+docs/*
