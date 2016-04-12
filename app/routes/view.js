@@ -6,6 +6,12 @@ module.exports = function (express) {
     // test pages
     var appRouter = express.Router();
 
+    /*
+     * GET
+     * '/'
+     * Deliver's index with random background
+     * TODO Parse session data into index
+     */
     appRouter.get('/', function (req, res) {
         var $ = req.session;
         res.render("index", {session: $, bg: lib.rnd()}, function (err, result) {
@@ -15,6 +21,11 @@ module.exports = function (express) {
 
     });
 
+    /*
+     * GET
+     * '/test'
+     * Page used to rest random crap
+     */
     appRouter.get('/test', function (req, res) {
         var getReq = '';
         if (req.query['q'] != undefined) {
@@ -27,6 +38,11 @@ module.exports = function (express) {
             session: req.session
         });
     });
+    /*
+     * GET
+     * '/sess'
+     * Session data test page
+     */
     appRouter.get('/sess', function (req, res) {
         var $ = req.session;
         var user = new User();
@@ -46,6 +62,12 @@ module.exports = function (express) {
             res.end('welcome to the session demo. refresh!')
         }
     });
+
+    /*
+     * GET
+     * ''
+     * Catch blank
+     */
     appRouter.get('', function (req, res) {
         var $ = req.session;
         res.render("index", {session: $, bg: lib.rnd()}, function (err, result) {
@@ -55,6 +77,12 @@ module.exports = function (express) {
 
     });
 
+    /*
+     * GET
+     * '/u/'+username
+     * User profile page
+     * //TODO generate from restful api
+     */
     appRouter.get('/u/:id', function (req, res) {
         var o = {};
         o.user = req.params.id;
@@ -84,7 +112,11 @@ module.exports = function (express) {
         }
     });
 
-// File called
+    /*
+     * GET
+     * '/'+file
+     * Deliver file or 404
+     */
     appRouter.get('/:file', function (req, res) {
         // if (typeof req.session.loggedIn === undefined) {
         //     req.session.loggedIn=false;

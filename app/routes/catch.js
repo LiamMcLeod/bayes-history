@@ -1,3 +1,4 @@
+//REDUNDANT
 module.exports = function (app) {
   var mod = require('../modules/routeModules');
 

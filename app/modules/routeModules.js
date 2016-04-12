@@ -1,5 +1,11 @@
 var lib = require('./lib');
 
+/*
+ * Return for query {query} results {results} as {res} JSON (REST)
+ * @param query PG.CLIENT
+ * @param results Object
+ * @param res Express Response Object
+ */
 function getResults(query, results, res) {
     query.on('row', function (row) {
         results.push(row);
@@ -14,6 +20,14 @@ function getResults(query, results, res) {
         else return res.json(results);
     });
 }
+
+/*
+ * Error function for generating error page
+ * using {err}
+ * @param req Express Request Object
+ * @param res Express Response Object
+ * @param err Error Callback
+ */
 function error(req, res, err) {
     // res.status(err.status || 500);
     if (err) {
@@ -49,7 +63,11 @@ function error(req, res, err) {
     }
 
 }
-
+/*
+ * Check if query parameter has been provided
+ * @param req Express Request Object
+ * @param res Express Response Object
+ */
 function checkPretty(req, res) {
     if (req.query['pretty'] != undefined) {
         param.pretty = req.query['pretty'];
@@ -64,6 +82,13 @@ function checkParams(req, res) {
     return param;
 }
 
+/*
+ * Return {res} JSON Variant for when a
+ * query parameter {param} has been provided
+ * @param res Express Response Object
+ * @param results Object
+ * @param param Object
+ */
 function returnJSON(res, results, param) {
     if (results == [] || results == undefined || results == null) {
         return res.status(404).json({message: "Error: Not Found."});
@@ -74,12 +99,20 @@ function returnJSON(res, results, param) {
     else return res.json(results);
 }
 
+
+/*
+ * {res} Render {file} providing session
+ * and user data in {req}
+ * @param req Express Request Object
+ * @param res Express Response Object
+ * @param file String
+ */
 function renderLoggedIn(req, res, file) {
     var $ = req.session;
     res.render(file, {
         bg: lib.rnd(),
         session: $,
-        status:  req.flash('status'),
+        status: req.flash('status'),
         loggedIn: $.loggedIn,
         userId: $.user.UserId,
         username: $.user.Username,
@@ -96,6 +129,12 @@ function renderLoggedIn(req, res, file) {
     });
 }
 
+/*
+ * {res} Render {file} no user data available
+ * @param req Express Request Object
+ * @param res Express Response Object
+ * @param file String
+ */
 function renderLoggedOut(req, res, file) {
     var $ = req.session;
 
@@ -108,12 +147,19 @@ function renderLoggedOut(req, res, file) {
         else res.send(result)
     });
 }
+/*
+ * {res} Render user profile page
+ * and user data in {req}
+ * @param req Express Request Object
+ * @param res Express Response Object
+ */
 function renderProfile(req, res) {
+    //TODO FIX No Vars rendering
     var $ = req.session;
     res.render('profile', {
         bg: lib.rnd(),
         session: $,
-        status:  req.flash('status'),
+        status: req.flash('status'),
         loggedIn: $.loggedIn,
         userId: $.user.UserId,
         username: $.user.Username,

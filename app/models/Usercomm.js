@@ -115,7 +115,6 @@ setResults = function (results) {
     set("Role", results.rows[0].Role);
     set("Username", results.rows[0].Username);
     set("FirstName", results.rows[0].FirstName);
-    // if (results.rows[0].PostNominal!='undefined')
     set("PostNominal", results.rows[0].PostNominal);
 };
 

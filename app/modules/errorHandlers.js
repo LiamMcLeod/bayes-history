@@ -1,3 +1,6 @@
+/*
+ * REDUNDANT
+ */
 exports = function (app) {
     if (app.get('env') === 'development') {
 

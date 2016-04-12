@@ -35,7 +35,6 @@ function toggleDisable(role) {
                 }
                 break;
         }
-        // $('#edit-user').submit();
         $('.pen-icon a').toggleClass('fa-edit');
     }
 }

@@ -1,12 +1,17 @@
 var mod = require('../modules/routeModules');
+var lib = require('../modules/lib');
 var User = require('../models/User');
-
 
 
 module.exports = function (express, client) {
 
     var apiRouter = express.Router();
 
+    /*
+     * GET
+     * /api+'/'
+     * Returns API version and other data
+     */
     apiRouter.get('/', function (req, res) {
         var results = [];
         var param = {};
@@ -18,24 +23,35 @@ module.exports = function (express, client) {
         mod.returnJSON(res, results, param);
     });
 
+    /*
+     * GET
+     * /api+ TEST ROUTES
+     * Cookie Test
+     */
     apiRouter.get('/cookie', function (req, res) {
         res.cookie('connect.sid', {MaxAge: 604800000}).send('Cookie is set');
     });
 
+
+    /*
+     * GET
+     * /api+'/user'
+     * Returns User JSON DATA
+     *  TODO Finish or scrap
+     *  RESTFUL Profile Generation?
+     */
     apiRouter.get('/user', function (req, res) {
         var results;
-        // TODO Query Stuff
         var param = mod.checkParams(req, res);
         mod.returnJSON(res, results, param);
     });
 
-    apiRouter.get('/users', function (req, res) {
-        var results;
-        // TODO Query Stuff
-        var params = mod.checkParams(req, res);
-        mod.returnJSON(res, results, params);
-    });
-
+    /*
+     * GET
+     * /api+'/logout'
+     * Destroys user session data
+     * Redirects them to index
+     */
     apiRouter.get('/logout', function (req, res) {
         req.session.destroy();
         //TODO Cookie stuff
@@ -45,6 +61,12 @@ module.exports = function (express, client) {
         })
     });
 
+    /*
+     * POST
+     * /api+'/login'
+     * Instantiates user to interrogate database
+     * verifying credentials provided
+     */
     apiRouter.post('/login', function (req, res) {
         //TODO Server Side Validation
         var user = new User();
@@ -73,8 +95,10 @@ module.exports = function (express, client) {
                     if (valid) {
                         var obj = {};
                         for (var key in userData) {
-                            if (userData[key].trim) {
-                                userData[key] = userData[key].trim();
+                            if (lib.isset(userData[key]) && userData[key] != null) {
+                                if (userData[key].trim) {
+                                    userData[key] = userData[key].trim();
+                                }
                             }
                         }
 
@@ -102,15 +126,24 @@ module.exports = function (express, client) {
         });
     });
 
-    apiRouter.post('/edit/user' ,function(req, res){
+    /*
+     * POST
+     * /api+'/edit/user'
+     * Retrieves and changes made to user data
+     */
+    apiRouter.post('/edit/user', function (req, res) {
         //TODO Finish this route
+        //TODO Server side validation for data and user role.
         var o = req.body();
         req.send(o)
     });
 
-//Catch All
+    /*
+     * GET
+     * /api+'/*'
+     * Catch all 404 fallback
+     */
     apiRouter.get('/*', function (req, res) {
-        var results;
         mod.returnJSON(res);
     });
 
