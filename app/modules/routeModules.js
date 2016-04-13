@@ -184,6 +184,15 @@ function renderProfile(req, res) {
     });
 }
 
+function renderFile(req, res, file){
+    res.render(file, {
+        bg: lib.rnd(),
+    }, function (err, result) {
+        if (err) error(req, res, err);
+        else res.send(result)
+    });
+}
+
 exports.getResults = getResults;
 exports.checkParams = checkParams;
 exports.checkPretty = checkPretty;
@@ -192,3 +201,4 @@ exports.error = error;
 exports.renderLoggedOut = renderLoggedOut;
 exports.renderLoggedIn = renderLoggedIn;
 exports.renderProfile = renderProfile;
+exports.renderFile = renderFile;
