@@ -20,6 +20,25 @@ body#page-top
     #wrapper
         header.text-light#search-page(style="background-image:url(\"/public/img/bg/bg#{bg}.jpg\");")
             .container-full.pad-top
+                //TODO TABS FOR HOME, ABOUT ETC
+                .col-lg-12.tabs
+                    nav
+                        ul
+                        li.tab-current
+                            a(href='#')
+                            span Search
+                        li
+                          a(href='#')
+                            span Home
+                        li
+                          a(href='#')
+                            span Random
+                        li
+                          a(href='#')
+                            span About
+                        li
+                          a(href='#')
+                            span Contact
                 .col-lg-12
                     .col-lg-offset-2.col-lg-8.text-center.v-center.content-box.search-container
                         h1 Bayes History
@@ -34,3 +53,4 @@ body#page-top
     include includes/footer
     include includes/js
     include includes/hamburger
+    include includes/betawarning
