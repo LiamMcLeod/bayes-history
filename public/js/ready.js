@@ -1,10 +1,11 @@
 $(document).ready(function () {
+
     function toggleHide(id) {
         $(id).toggleClass('hide');
     }
 
     function toggleMenu() {
-        $('#floating-menu').toggleClass('hide');
+        $('#mobile-menu').toggleClass('hide');
     }
 
     if (screen.width <= 375) {

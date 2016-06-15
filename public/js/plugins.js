@@ -1,3 +1,8 @@
+function toggleMenu() {
+    $('#mobile-menu').toggleClass('hide');
+}
+
+
 var $norm = $('.norm-toggle');
 var $mod = $('.mod-toggle');
 var $ad = $('.ad-toggle');
@@ -57,3 +62,5 @@ function checkInput() {
 function toggleHide(id) {
     $(id).toggleClass('hide');
 }
+
+

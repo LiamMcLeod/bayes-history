@@ -102,7 +102,9 @@ body {
     height: 100%; }
 
   .btn-show {
-    margin-left: 44%; }
+    position: relative;
+    left: 45.5%;
+    margin-right: -45%; }
 
   main .content-container {
     min-height: 370px;
@@ -363,7 +365,7 @@ body {
   padding: 0; }
 
 .search-container {
-  padding: .5% 0% 2% 0%; }
+  padding: 0 0 5% 0; }
 
 .content-box {
   color: #3c3c3c;
