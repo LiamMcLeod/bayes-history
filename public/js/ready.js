@@ -1,9 +1,12 @@
 $(document).ready(function () {
+    function toggleHide(id) {
+        $(id).toggleClass('hide');
+    }
 
     function toggleMenu() {
         $('#floating-menu').toggleClass('hide');
     }
-    
+
     if (screen.width <= 375) {
         $('#icon').click(function () {
             $(this).toggleClass('open');

@@ -17,6 +17,17 @@ Vars
 /* =============================================================================
 Main Styles
 ========================================================================== */
+#betaWarning {
+  cursor: pointer;
+  width: 50%;
+  height: 150px;
+  background: #ffdddd;
+  border: 1px solid #ffaaaa;
+  border-radius: 10px;
+  padding: 0 20px 20px 20px;
+  font-size: 1em;
+  margin: 0 auto 50px auto; }
+
 html {
   height: 100%;
   width: 100%; }
@@ -89,6 +100,9 @@ body {
 
   main {
     height: 100%; }
+
+  .btn-show {
+    margin-left: 44%; }
 
   main .content-container {
     min-height: 370px;
